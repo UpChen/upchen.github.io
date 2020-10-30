@@ -24,29 +24,41 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="MINGCHEN&#39;s Blog">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content=".image_description {     color: rgba(41, 41, 41, 1);      font-size: 16px;     font-weight: 400;     font-family: charter, Georgia, Cambria, &quot;Times New Roman&quot;;     font-style: normal; }    Paper link">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[CVPR18] Context Contrasted Feature and Gated Multi scale Aggregationfor Scene Segmentation">
+<meta property="og:url" content="http://example.com/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/index.html">
 <meta property="og:site_name" content="MINGCHEN&#39;s Blog">
+<meta property="og:description" content=".image_description {     color: rgba(41, 41, 41, 1);      font-size: 16px;     font-weight: 400;     font-family: charter, Georgia, Cambria, &quot;Times New Roman&quot;;     font-style: normal; }    Paper link">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/overview.png">
+<meta property="og:image" content="http://example.com/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/FCN.png">
+<meta property="og:image" content="http://example.com/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/CCL.png">
+<meta property="og:image" content="http://example.com/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/Visualization.png">
+<meta property="article:published_time" content="2020-10-30T15:42:17.000Z">
+<meta property="article:modified_time" content="2020-10-30T18:36:02.795Z">
 <meta property="article:author" content="MINGCHEN">
+<meta property="article:tag" content="Paper Analysis">
+<meta property="article:tag" content="CCL">
+<meta property="article:tag" content="gated sum">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/overview.png">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>MINGCHEN's Blog</title>
+  <title>[CVPR18] Context Contrasted Feature and Gated Multi scale Aggregationfor Scene Segmentation | MINGCHEN's Blog</title>
   
 
 
@@ -162,7 +174,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -175,6 +187,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Motivation"><span class="nav-number">2.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Contributions"><span class="nav-number">3.</span> <span class="nav-text">Contributions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Context-Contrasted-Local-Feature"><span class="nav-number">3.1.</span> <span class="nav-text">Context Contrasted Local Feature</span></a></li></ol></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -229,11 +242,12 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
       
 
       
-    
+
+  
 
 
 <div class="post-block">
@@ -253,10 +267,9 @@
       <meta itemprop="name" content="MINGCHEN's Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/" class="post-title-link" itemprop="url">[CVPR18] Context Contrasted Feature and Gated Multi scale Aggregationfor Scene Segmentation</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          [CVPR18] Context Contrasted Feature and Gated Multi scale Aggregationfor Scene Segmentation
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -289,7 +302,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <style type="text/css" rel="stylesheet">
+        <style type="text/css" rel="stylesheet">
 .image_description {
     color: rgba(41, 41, 41, 1); 
     font-size: 16px;
@@ -301,15 +314,77 @@
 </style>
 
 <p><strong>Paper link :</strong> <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/8578352">Context Contrasted Feature and Gated Multi-scale Aggregation for Scene Segmentation</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+<a id="more"></a>
+
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Quite a few algorithms. This paper provides two new ideas about the scene segmentation. One is <strong>context contrasted local feature (CCL)</strong>, another one is <strong>gated sum</strong>. CCL feature is extracted for each pixel to learn the details of local feature. It makes the model have strong performance for inconspicuous objects. Gated sum is a kind of weighted sum of different scale of features. It is a complicated operation in this paper even though it just makes little improvement of performance of the model. However, it is a good point that sum the features according the importance in my and my tutor’s opinion.</p>
+<h1 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h1><p>This paper is to solved two problems on the scene segmentation. One is that the features extracted by deep convolutional neuro network (DCNN) are very abstract and </p>
+<blockquote>
+<p><strong>“inconspicous objects and stuff will be dominated by salient objects and its information will be somewhat weakened or even disregard, which is contradictory with the goal of scene segmentation [1].”</strong></p>
+</blockquote>
+<p>Here I just quote the sentence in this paper which is explained very well I think. Another problem is that the features of skip layers in previous work such as Fully Convolutional Network (FCN) are just simple summed and the different improtance of different scales are ignored.</p>
+<h1 id="Contributions"><a href="#Contributions" class="headerlink" title="Contributions"></a>Contributions</h1><h2 id="Context-Contrasted-Local-Feature"><a href="#Context-Contrasted-Local-Feature" class="headerlink" title="Context Contrasted Local Feature"></a>Context Contrasted Local Feature</h2><p>Now, it’s time to introduce one of the leading roles CCL. In my opnion, you can understand the CCL model in one way that CCL model produce coarse context and delicate local feature for each pixel. Therefore, the DCNN model not only learn the abstract feature from images, but also learn the local feature for each pixel. Anyway, let’s into the paper and see what authors say.</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08); 
+    width: 450px; height: 450px" 
+    src="overview.png">
+    <div style=" display: inline-block;
+    color: #999;
+    font-size: 16px;
+    padding: 2px;">Figure 1: Overview of network framework [1].</div>
+</center>
+<br/>
+
+<p>This is the overview of network framework. They use FCN-like architecture with ResNet-101 as backbone netwrok. We will compare this model with FCN and see what improvements are.</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08); 
+    width: 650px; height: 350px" 
+    src="FCN.png">
+    <div style=" display: inline-block;
+    color: #999;
+    font-size: 16px;
+    padding: 2px;">Figure 2: The architecture of FCN. Pooling and prediction layers are shown as grids that reveal relative spatial coarseness, while intermediate layers are shown as vertical lines [2].</div>
+</center>
+<br/>
+
+
+<blockquote>
+<p><strong>“CCL first contextualizes contrasted features at every block to obtain context aware local features, which combines two different scales in the feature level and take advantage of both context and local information [1]”</strong></p>
+</blockquote>
+<p>From the paper and graph, we can know that authors <strong>add more skip layers than in FCN and use CCL features at each block</strong>. The reason why add more skip layers is get richer scale feature maps. Ok, we already have a macro view about this model. Let’s into details of CCL features.</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08); 
+    width: 550px; height: 400px" 
+    src="CCL.png">
+    <div style=" display: inline-block;
+    color: #999;
+    font-size: 16px;
+    padding: 2px;">Figure 3: Context Contrasted Local (CCL). Each block of CCL consists of two parallel parts: coarse context and delicate local [1].</div>
+</center>
+<br/>
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08); 
+    width: 500px; height: 300px" 
+    src="Visualization.png">
+    <div style=" display: inline-block;
+    color: #999;
+    font-size: 16px;
+    padding: 2px;">Figure 4: Visualization of different feature information [1].</div>
+</center>
+<br/>
+
+<p>I think that watching two pictures above at the same time is easier to understand what CCL feature is doing. First, let’s look at the figure 3. Authors do normal and dilated convolutional operation on the same feature, then do minus operation each other. (Here I only explain the dilated convolution briely. Dilated convolution is that when you do dilated convolution you need to fill up zeros in the kernels or equal interval sampling features [3]). In this way, model could not only exploit useful context but also foreground the local information in contrast to the context.</p>
+<blockquote>
+<p><strong>“It is a mechanism that imitates human behavior. When our human beings look at one object we always collect discriminative-context for that object in a way that our eyes focus on that object in contrast to the blurred surroundings [1].”</strong></p>
+</blockquote>
+<p>It seems that this idea is inspired by the way of how people look at things. I haven’t read the book that this paper mentioned, but it makes sense I think. It is like that we will only focus on the object cause the surrounding is blurred.</p>
+<p>$$ CL=f_l(F,\Theta_l)-f_c(F,\Theta_c) \tag{1}$$</p>
+<p>where $ F $ is the input features, $ f_l $ </p>
+
     </div>
 
     
@@ -317,96 +392,29 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
+          <div class="post-tags">
+              <a href="/tags/Paper-Analysis/" rel="tag"># Paper Analysis</a>
+              <a href="/tags/CCL/" rel="tag"># CCL</a>
+              <a href="/tags/gated-sum/" rel="tag"># gated sum</a>
+          </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/29/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="MINGCHEN">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MINGCHEN's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/29/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-10-29 15:52:12" itemprop="dateCreated datePublished" datetime="2020-10-29T15:52:12+00:00">2020-10-29</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-10-30 13:56:23" itemprop="dateModified" datetime="2020-10-30T13:56:23+00:00">2020-10-30</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/29/hello-world/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/10/29/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-chevron-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
 
 
-
-
-  
 
 
 

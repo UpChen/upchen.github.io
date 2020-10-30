@@ -182,7 +182,7 @@ body {
   background: var(--body-bg-color);
   color: var(--text-color);
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 1em;
+  font-size: 1.1em;
   line-height: 2;
   min-height: 100%;
   position: relative;
@@ -1845,7 +1845,7 @@ pre code {
   width: 4px;
 }
 .post-body {
-  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: charter, Georgia, Cambria, "Times New Roman", Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
   overflow-wrap: break-word;
 }
 @media (min-width: 1200px) {
@@ -2038,7 +2038,7 @@ pre code {
 }
 .posts-expand .post-meta-container {
   color: #999;
-  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: charter, Georgia, Cambria, "Times New Roman", Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 0.75em;
   margin-top: 3px;
 }
@@ -2428,6 +2428,13 @@ ul.breadcrumb li:last-child {
 .tag-cloud-10 {
   border-bottom-color: #111;
   color: #111;
+}
+mjx-container[jax="CHTML"][display="true"],
+.has-jax {
+  overflow: auto hidden;
+}
+mjx-container[display="true"] + br {
+  display: none;
 }
 .use-motion .animated {
   animation-fill-mode: none;
