@@ -43,7 +43,7 @@
 <meta property="og:image" content="http://example.com/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/SUN-RGBD.png">
 <meta property="og:image" content="http://example.com/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/COCO.png">
 <meta property="article:published_time" content="2020-10-30T15:42:17.000Z">
-<meta property="article:modified_time" content="2020-11-02T17:44:01.159Z">
+<meta property="article:modified_time" content="2020-11-05T12:13:03.706Z">
 <meta property="article:author" content="MINGCHEN">
 <meta property="article:tag" content="Paper Analysis">
 <meta property="article:tag" content="CCL">
@@ -293,7 +293,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-11-02 17:44:01" itemprop="dateModified" datetime="2020-11-02T17:44:01+00:00">2020-11-02</time>
+        <time title="Modified: 2020-11-05 12:13:03" itemprop="dateModified" datetime="2020-11-05T12:13:03+00:00">2020-11-05</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -332,8 +332,9 @@
 <p><strong>The link of Chinese version of this paper analysis :</strong></p>
 <a id="more"></a>
 
+<p><strong><em>Highlight words in red color is content what i am not sure and very welcome to talk about it with me.</em></strong></p>
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>This paper provides two new ideas about the scene segmentation. One is <strong>context contrasted local feature (CCL)</strong>, another one is <strong>gated sum</strong>. In my opinon, CCL feature is extracted for each pixel to learn the details of local feature. It makes the model have strong performance for inconspicuous objects. Gated sum is a kind of weighted sum of different scale of features, which is a series of complicated operations in this paper even though it just makes little improvement of performance of the model. However, it is a good point that sum the features according to the importance.</p>
-<h1 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h1><p>This paper is to solved two problems on the scene segmentation. One is that the features extracted by deep convolutional neuro network (DCNN) are very abstract and </p>
+<h1 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h1><p>This paper is to solved two problems on the scene segmentation. One is that the features extracted by deep convolutional neuro network (DCNN) are very abstract because you will lose more details of the feature when you use higher layers and </p>
 <blockquote>
 <p><strong>“inconspicous objects and stuff will be dominated by salient objects and its information will be somewhat weakened or even disregard, which is contradictory with the goal of scene segmentation [1].”</strong></p>
 </blockquote>
@@ -360,7 +361,7 @@
 <blockquote>
 <p><strong>“CCL first contextualizes contrasted features at every block to obtain context aware local features, which combines two different scales in the feature level and take advantage of both context and local information [1]”</strong></p>
 </blockquote>
-<p>From the sentence I quoted and graph above, we can know that authors <strong>add more skip layers than in FCN and <font color="red">use CCL features at each block</font></strong>. The reason why add more skip layers is get richer scale feature maps. Ok, we already have a macro view about this model. Let’s into details of CCL features.</p>
+<p>From the sentence I quoted and graph above, we can know that authors <strong>add more skip layers than in FCN and <font color="red">use CCL features at each layer</font></strong> (Here I look into the code of this paper and find that is seem to be adopted at each layer). The reason why add more skip layers is get richer scale feature maps. Ok, we already have a macro view about this model. Let’s into details of CCL features.</p>
 <center>
     <img class="image" 
     style="width: 550px; height: 400px" 
@@ -383,7 +384,7 @@
 </blockquote>
 <p>It seems that this idea is inspired by the way of how people look at things. I haven’t read the book that this paper mentioned, but it makes sense I think. It is liked that we will only focus on the object cause the surrounding is blurred.</p>
 <p>$$ CL=f_l(F,\Theta_l)-f_c(F,\Theta_c) \tag{1}$$</p>
-<p>where $F$ is the input features, $f_l$ is the function of local $Conv$, $F_c$ is the function of context $Conv$, $\Theta_l$ and $\Theta_c$ are respective parameters, and $CL$ is the desired context contrasted local features. <font color="red">As for the question that my tutor mentioned why is not sum, I think the reason is that sum is not meet the blurred surrounding of theory. Since the result of sum is only sharp the local feature, the discriminal objects will still be dominated by salient objects and just a lesser degree. This is just my opinon, cause I didn’t try the code and test the differences of performance of the model between minus and sum operation.</font> On the other hand, my tutor said that six blocks maybe the result of tuning parameters during training process. That’s why authors said the number of blocks of Context-Local depends on your inputs.</p>
+<p>where $F$ is the input features, $f_l$ is the function of local $Conv$, $F_c$ is the function of context $Conv$, $\Theta_l$ and $\Theta_c$ are respective parameters, and $CL$ is the desired context contrasted local features. <font color="red">As for the question that my tutor mentioned why is not sum, </font> I think the reason is that sum is not meet the blurred surrounding of theory. Since the result of sum is only sharp the local feature, the discriminal objects will still be dominated by salient objects and just a lesser degree. This is just my opinon, cause I didn’t try the code and test the differences of performance of the model between minus and sum operation. On the other hand, my tutor said that six blocks maybe the result of tuning parameters during training process. That’s why authors said the number of blocks of Context-Local depends on your inputs.</p>
 <h2 id="Gated-Mult-scale-Aggregation"><a href="#Gated-Mult-scale-Aggregation" class="headerlink" title="Gated Mult-scale Aggregation"></a>Gated Mult-scale Aggregation</h2><center>
     <img class="image" 
     style="width: 550px; height: 350px" 
@@ -392,7 +393,7 @@
 </center>
 <br/>
 
-<p>The idea of gated sum is easy to understand, but its details are little complicated. Let’s figure details out now. From the picture, we can know that the first step is info-skip layers consisting of $Conv+Sigmoid$ operations to generate information map. Then use the RNN to learn the relationship of these information maps which is important for the value of the Gate. <font color="red">In this step, I am still little confused about how and what RNN will lean. Next, the Global Refine just adds the global information and produce value of Gate. Final step, selectively aggreated score map through different value of Gate. </font> Below are math equations of Gated Sum.</p>
+<p>The idea of gated sum is easy to understand, but its details are little complicated. Let’s figure details out now. From the picture, we can know that the first step is info-skip layers consisting of $Conv+Sigmoid$ operations to generate information map. Then use the RNN to learn the relationship of these information maps which is important for the value of the Gate. In this step, the RNN could learn the relationship among features of hign and low layers. Next, the Global Refine just adds the global information and produce value of Gate. Final step, selectively aggreated score map through different value of Gate. Below are math equations of Gated Sum.</p>
 <p>$$I_p^n=f_i^n(F_p^n,\Theta_i^n) \tag{2}$$ </p>
 <p>where $F_i^n$ is the function of $n$th info-skip layer $Conv+Sigmoid$ and $\Theta_i^n$ is its parameters. $I_p^n$ is an information map of size $H$ x $W$ x $1$ from corresponding feature. Then these information maps $I_p^n$ are inputted to RNN in sequence to learn their relationships:</p>
 <p>$$h_p^n=tanh \left ( W^n \begin{pmatrix}<br>h_p^{n-1} \newline<br>I_p^n<br>\end{pmatrix} \right ) \tag{3}$$</p>
@@ -400,7 +401,6 @@
 <p>$$ \overline{H_p}=f_g(H_p, \Theta_g)+H_p \tag{4}$$</p>
 <p>where $f_g$ is a $1$ x $1$ $N$ x $N$ $Conv$ and $\Theta_g$ is its parameters. $H_p=(h_p^1 \cdots h_p^N)^T$ is the outputs of RNN are concatnated.</p>
 <p>$$ G_p^n=N. \frac{e^{\overline{h_p^n}}} {\sum_{i=1}^N e^{\overline{h_p^i}}} \tag{5}$$</p>
-<p><font color="red">why $e^{\overline{h_p^n}}$  Here I think that it’s possible to consider the calculation in some points like denominator can’t be zero.</font></p>
 <p>the sum of $G_p^n$ for each position $p$ is normalized to $N$. Finally, $N$ score maps are selectively fused via gated sum:</p>
 <p>$$ \overline{S_p^c}=\sum_{n=1}^N G_p^n S_p^{c,n} \tag{6}$$</p>
 <p>where $\overline{S_p^c}$ is the output of gated sum.</p>
@@ -422,7 +422,7 @@
 </center>
 <br/>
 
-<p>Form the Figure 7, we can see that the CCL is actually worked. </p>
+<p>Global Pixel Accuracy (GPA) is the ratio of the number of correctly classified pixels to the number of all pixels.  Average Class Accuracy (ACA) is the mean accuracy of classified class. Mean Intersection-over-Union (IoU) is the mean ratio of intersection and union of predicted bounding box and true bounding box. Form the Figure 7, we can see that the CCL is actually worked. </p>
 <center>
     <img class="image" 
     style="width: 450px; height: 250px" 
@@ -458,7 +458,7 @@
 
 <p>That is why this paper can be published on CVPR. It is truly that has a good performance on scene segmentation. </p>
 <hr>
-<p><strong>If you have any questions, feel free to comment. Thanks for reading.</strong></p>
+<p><strong><em>If you have any questions, feel free to comment. Thanks for reading.</em></strong></p>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
 <li><p>Ding, H. et al. (2018) ‘Context Contrasted Feature and Gated Multi-scale Aggregation for Scene Segmentation’, 2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition, Computer Vision and Pattern Recognition (CVPR), pp. 2393–2402. doi: 10.1109/CVPR.2018.00254.</p>
 </li>
@@ -502,6 +502,7 @@
 
 
       
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -629,6 +630,26 @@
     
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '799c5e58b7d6284f21ac',
+      clientSecret: '4847a3a09afe4932a7029e2e12fa24ee902124fe',
+      repo        : 'UpChen.github.io',
+      owner       : 'UpChen',
+      admin       : ['UpChen'],
+      id          : 'da0bd2c1ebda0beaf2d21bf0a33cacb0',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
