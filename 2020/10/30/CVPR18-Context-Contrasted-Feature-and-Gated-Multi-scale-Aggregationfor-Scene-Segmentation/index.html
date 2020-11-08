@@ -26,7 +26,7 @@
 
   <meta name="description" content=".image {      border-radius: 0.3125em;     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);      } .image_description {     display: inline-block;     color: #999;     font">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[CVPR18] Context Contrasted Feature and Gated Multi scale Aggregation for Scene Segmentation">
+<meta property="og:title" content="[CVPR18] Context Contrasted Feature and Gated Multi Scale Aggregation for Scene Segmentation">
 <meta property="og:url" content="http://example.com/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/index.html">
 <meta property="og:site_name" content="MINGCHEN&#39;s Blog">
 <meta property="og:description" content=".image {      border-radius: 0.3125em;     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);      } .image_description {     display: inline-block;     color: #999;     font">
@@ -43,7 +43,7 @@
 <meta property="og:image" content="http://example.com/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/SUN-RGBD.png">
 <meta property="og:image" content="http://example.com/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/COCO.png">
 <meta property="article:published_time" content="2020-10-30T15:42:17.000Z">
-<meta property="article:modified_time" content="2020-11-05T12:47:38.324Z">
+<meta property="article:modified_time" content="2020-11-06T15:53:12.616Z">
 <meta property="article:author" content="MINGCHEN">
 <meta property="article:tag" content="Paper Analysis">
 <meta property="article:tag" content="CCL">
@@ -65,7 +65,7 @@
   };
 </script>
 
-  <title>[CVPR18] Context Contrasted Feature and Gated Multi scale Aggregation for Scene Segmentation | MINGCHEN's Blog</title>
+  <title>[CVPR18] Context Contrasted Feature and Gated Multi Scale Aggregation for Scene Segmentation | MINGCHEN's Blog</title>
   
 
 
@@ -194,7 +194,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Motivation"><span class="nav-number">2.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Contributions"><span class="nav-number">3.</span> <span class="nav-text">Contributions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Context-Contrasted-Local-Feature"><span class="nav-number">3.1.</span> <span class="nav-text">Context Contrasted Local Feature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gated-Mult-scale-Aggregation"><span class="nav-number">3.2.</span> <span class="nav-text">Gated Mult-scale Aggregation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Experiments-amp-Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Experiments &amp; Conclusion</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Validation-of-the-model"><span class="nav-number">4.1.</span> <span class="nav-text">Validation of the model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Results-On-Scene-Segmentation"><span class="nav-number">4.2.</span> <span class="nav-text">Results On Scene Segmentation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Motivation"><span class="nav-number">2.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Contributions"><span class="nav-number">3.</span> <span class="nav-text">Contributions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Context-Contrasted-Local-Feature"><span class="nav-number">3.1.</span> <span class="nav-text">Context Contrasted Local Feature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gated-Multi-scale-Aggregation"><span class="nav-number">3.2.</span> <span class="nav-text">Gated Multi-scale Aggregation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Experiments-amp-Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Experiments &amp; Conclusion</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Validation-of-the-model"><span class="nav-number">4.1.</span> <span class="nav-text">Validation of the model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Results-On-Scene-Segmentation"><span class="nav-number">4.2.</span> <span class="nav-text">Results On Scene Segmentation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -275,7 +275,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          [CVPR18] Context Contrasted Feature and Gated Multi scale Aggregation for Scene Segmentation
+          [CVPR18] Context Contrasted Feature and Gated Multi Scale Aggregation for Scene Segmentation
         </h1>
 
         <div class="post-meta-container">
@@ -293,7 +293,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-11-05 12:47:38" itemprop="dateModified" datetime="2020-11-05T12:47:38+00:00">2020-11-05</time>
+        <time title="Modified: 2020-11-06 15:53:12" itemprop="dateModified" datetime="2020-11-06T15:53:12+00:00">2020-11-06</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -341,12 +341,12 @@
 
 <p><strong><em>Highlight words in red color is content what i am not sure and very welcome to talk about it with me.</em></strong></p>
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>This paper provides two new ideas about the scene segmentation. One is <strong>context contrasted local feature (CCL)</strong>, another one is <strong>gated sum</strong>. In my opinon, CCL feature is extracted for each pixel to learn the details of local feature. It makes the model have strong performance for inconspicuous objects. Gated sum is a kind of weighted sum of different scale of features, which is a series of complicated operations in this paper even though it just makes little improvement of performance of the model. However, it is a good point that sum the features according to the importance.</p>
-<h1 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h1><p>This paper is to solved two problems on the scene segmentation. One is that the features extracted by deep convolutional neuro network (DCNN) are very abstract because you will lose more details of the feature when you use higher layers and </p>
+<h1 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h1><p>This paper is to solved two problems on the scene segmentation. One is that the features extracted by deep convolutional neural network (DCNN) are very abstract because you will lose more details of the feature when you use higher layers and </p>
 <blockquote>
-<p><strong>“inconspicous objects and stuff will be dominated by salient objects and its information will be somewhat weakened or even disregard, which is contradictory with the goal of scene segmentation [1].”</strong></p>
+<p><strong>“inconspicuous objects and stuff will be dominated by salient objects and its information will be somewhat weakened or even disregard, which is contradictory with the goal of scene segmentation [1].”</strong></p>
 </blockquote>
-<p>Here I just quote the sentence in this paper which is explained very well I think. Another problem is that the features of skip layers in previous work such as Fully Convolutional Network (FCN) are just simple summed and the different improtance of different scales are ignored.</p>
-<h1 id="Contributions"><a href="#Contributions" class="headerlink" title="Contributions"></a>Contributions</h1><h2 id="Context-Contrasted-Local-Feature"><a href="#Context-Contrasted-Local-Feature" class="headerlink" title="Context Contrasted Local Feature"></a>Context Contrasted Local Feature</h2><p>Now, it’s time to introduce one of the leading roles CCL. In my opnion, you can understand the CCL model in one way that CCL model produce coarse context and delicate local feature for each pixel. Therefore, the DCNN model not only learn the abstract feature from images, but also learn the local feature for each pixel. Anyway, let’s into the paper and see what authors say.</p>
+<p>Here I just quote the sentence in this paper which is explained very well I think. Another problem is that the features of skip layers in previous work such as Fully Convolutional Network (FCN) are just simple summed and the different importance of different scales are ignored.</p>
+<h1 id="Contributions"><a href="#Contributions" class="headerlink" title="Contributions"></a>Contributions</h1><h2 id="Context-Contrasted-Local-Feature"><a href="#Context-Contrasted-Local-Feature" class="headerlink" title="Context Contrasted Local Feature"></a>Context Contrasted Local Feature</h2><p>Now, it’s time to introduce one of the leading roles CCL. In my opinion, you can understand the CCL model in one way that CCL model produce coarse context and delicate local feature for each pixel. Therefore, the DCNN model not only learn the abstract feature from images, but also learn the local feature for each pixel. Anyway, let’s into the paper and see what authors say.</p>
 <center>
     <img class="image" 
     style="width: 450px; height: 450px" 
@@ -368,7 +368,7 @@
 <blockquote>
 <p><strong>“CCL first contextualizes contrasted features at every block to obtain context aware local features, which combines two different scales in the feature level and take advantage of both context and local information [1]”</strong></p>
 </blockquote>
-<p>From the sentence I quoted and graph above, we can know that authors <strong>add more skip layers than in FCN and <font color="red">use CCL features at each layer</font></strong> (Here I look into the code of this paper and find that is seem to be adopted at each layer). The reason why add more skip layers is get richer scale feature maps. Ok, we already have a macro view about this model. Let’s into details of CCL features.</p>
+<p>From the sentence I quoted and graph above, we can know that authors <strong>add more skip layers than in FCN and <font color="red">use CCL features at each layer</font></strong> (Here I look into the code of this paper and find that is seem to be adopted at each layer). The reason why add more skip layers is to get richer scale feature maps. Ok, we already have a macro view about this model. Let’s into details of CCL features.</p>
 <center>
     <img class="image" 
     style="width: 550px; height: 400px" 
@@ -392,7 +392,7 @@
 <p>It seems that this idea is inspired by the way of how people look at things. I haven’t read the book that this paper mentioned, but it makes sense I think. It is liked that we will only focus on the object cause the surrounding is blurred.</p>
 <p>$$ CL=f_l(F,\Theta_l)-f_c(F,\Theta_c) \tag{1}$$</p>
 <p>where $F$ is the input features, $f_l$ is the function of local $Conv$, $F_c$ is the function of context $Conv$, $\Theta_l$ and $\Theta_c$ are respective parameters, and $CL$ is the desired context contrasted local features. <font color="red">As for the question that my tutor mentioned why is not sum, </font> I think the reason is that sum is not meet the blurred surrounding of theory. Since the result of sum is only sharp the local feature, the discriminal objects will still be dominated by salient objects and just a lesser degree. This is just my opinon, cause I didn’t try the code and test the differences of performance of the model between minus and sum operation. On the other hand, my tutor said that six blocks maybe the result of tuning parameters during training process. That’s why authors said the number of blocks of Context-Local depends on your inputs.</p>
-<h2 id="Gated-Mult-scale-Aggregation"><a href="#Gated-Mult-scale-Aggregation" class="headerlink" title="Gated Mult-scale Aggregation"></a>Gated Mult-scale Aggregation</h2><center>
+<h2 id="Gated-Multi-scale-Aggregation"><a href="#Gated-Multi-scale-Aggregation" class="headerlink" title="Gated Multi-scale Aggregation"></a>Gated Multi-scale Aggregation</h2><center>
     <img class="image" 
     style="width: 550px; height: 350px" 
     src="Gated_sum.png">
@@ -406,7 +406,7 @@
 <p>$$h_p^n=tanh \left ( W^n \begin{pmatrix}<br>h_p^{n-1} \newline<br>I_p^n<br>\end{pmatrix} \right ) \tag{3}$$</p>
 <p>where $h_p^n$ is the $n$ output of RNN. $W^n$ is its parameters.</p>
 <p>$$ \overline{H_p}=f_g(H_p, \Theta_g)+H_p \tag{4}$$</p>
-<p>where $f_g$ is a $1$ x $1$ $N$ x $N$ $Conv$ and $\Theta_g$ is its parameters. $H_p=(h_p^1 \cdots h_p^N)^T$ is the outputs of RNN are concatnated.</p>
+<p>where $f_g$ is a $1$ x $1$ x $N$ x $N$ $Conv$ and $\Theta_g$ is its parameters. $H_p=(h_p^1 \cdots h_p^N)^T$ is the outputs of RNN are concatnated.</p>
 <p>$$ G_p^n=N. \frac{e^{\overline{h_p^n}}} {\sum_{i=1}^N e^{\overline{h_p^i}}} \tag{5}$$</p>
 <p>the sum of $G_p^n$ for each position $p$ is normalized to $N$. Finally, $N$ score maps are selectively fused via gated sum:</p>
 <p>$$ \overline{S_p^c}=\sum_{n=1}^N G_p^n S_p^{c,n} \tag{6}$$</p>
