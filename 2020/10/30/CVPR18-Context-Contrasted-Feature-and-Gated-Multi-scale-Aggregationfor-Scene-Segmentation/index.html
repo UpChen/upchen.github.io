@@ -43,7 +43,7 @@
 <meta property="og:image" content="http://example.com/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/SUN-RGBD.png">
 <meta property="og:image" content="http://example.com/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/COCO.png">
 <meta property="article:published_time" content="2020-10-30T15:42:17.000Z">
-<meta property="article:modified_time" content="2020-11-06T15:53:12.616Z">
+<meta property="article:modified_time" content="2020-11-12T17:46:20.266Z">
 <meta property="article:author" content="MINGCHEN">
 <meta property="article:tag" content="Paper Analysis">
 <meta property="article:tag" content="CCL">
@@ -293,7 +293,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-11-06 15:53:12" itemprop="dateModified" datetime="2020-11-06T15:53:12+00:00">2020-11-06</time>
+        <time title="Modified: 2020-11-12 17:46:20" itemprop="dateModified" datetime="2020-11-12T17:46:20+00:00">2020-11-12</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -340,7 +340,7 @@
 <a id="more"></a>
 
 <p><strong><em>Highlight words in red color is content what i am not sure and very welcome to talk about it with me.</em></strong></p>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>This paper provides two new ideas about the scene segmentation. One is <strong>context contrasted local feature (CCL)</strong>, another one is <strong>gated sum</strong>. In my opinon, CCL feature is extracted for each pixel to learn the details of local feature. It makes the model have strong performance for inconspicuous objects. Gated sum is a kind of weighted sum of different scale of features, which is a series of complicated operations in this paper even though it just makes little improvement of performance of the model. However, it is a good point that sum the features according to the importance.</p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>This paper provides two new ideas about the scene segmentation. One is <strong>context contrasted local feature (CCL)</strong>, another one is <strong>gated sum</strong>. In my opinion, CCL feature is extracted for each pixel to learn the details of local feature. It makes the model have strong performance for inconspicuous objects. Gated sum is a kind of weighted sum of different scale of features, which is a series of complicated operations in this paper even though it just makes little improvement of performance of the model. However, it is a good point that sum the features according to the importance.</p>
 <h1 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h1><p>This paper is to solved two problems on the scene segmentation. One is that the features extracted by deep convolutional neural network (DCNN) are very abstract because you will lose more details of the feature when you use higher layers and </p>
 <blockquote>
 <p><strong>“inconspicuous objects and stuff will be dominated by salient objects and its information will be somewhat weakened or even disregard, which is contradictory with the goal of scene segmentation [1].”</strong></p>
@@ -355,7 +355,7 @@
 </center>
 <br/>
 
-<p>This is the overview of network framework. They use FCN-like architecture with ResNet-101 as backbone netwrok. We will compare this model with FCN and see what modifications are.</p>
+<p>This is the overview of network framework. They use FCN-like architecture with ResNet-101 as backbone network. We will compare this model with FCN and see what modifications are.</p>
 <center>
     <img class="image" 
     style="width: 650px; height: 350px" 
@@ -385,13 +385,13 @@
 </center>
 <br/>
 
-<p>I think that watching two pictures above at the same time is easier to understand what CCL feature is doing. First, let’s look at the figure 3. Authors do normal and dilated convolutional operation on the same feature, then do minus operation each other. (Here I only explain the dilated convolution briely. Dilated convolution is that when you do dilated convolution you need to fill up zeros in the kernels or equal interval sampling features [3]). In this way, model could not only exploit useful context but also foreground the local information in contrast to the context.</p>
+<p>I think that watching two pictures above at the same time is easier to understand what CCL feature is doing. First, let’s look at the figure 3. Authors do normal and dilated convolutional operation on the same feature, then do minus operation each other. (Here I only explain the dilated convolution briefly. Dilated convolution is that when you do dilated convolution you need to fill up zeros in the kernels or equal interval sampling features [3]). In this way, model could not only exploit useful context but also foreground the local information in contrast to the context.</p>
 <blockquote>
 <p><strong>“It is a mechanism that imitates human behavior. When our human beings look at one object we always collect discriminative-context for that object in a way that our eyes focus on that object in contrast to the blurred surroundings [1].”</strong></p>
 </blockquote>
 <p>It seems that this idea is inspired by the way of how people look at things. I haven’t read the book that this paper mentioned, but it makes sense I think. It is liked that we will only focus on the object cause the surrounding is blurred.</p>
 <p>$$ CL=f_l(F,\Theta_l)-f_c(F,\Theta_c) \tag{1}$$</p>
-<p>where $F$ is the input features, $f_l$ is the function of local $Conv$, $F_c$ is the function of context $Conv$, $\Theta_l$ and $\Theta_c$ are respective parameters, and $CL$ is the desired context contrasted local features. <font color="red">As for the question that my tutor mentioned why is not sum, </font> I think the reason is that sum is not meet the blurred surrounding of theory. Since the result of sum is only sharp the local feature, the discriminal objects will still be dominated by salient objects and just a lesser degree. This is just my opinon, cause I didn’t try the code and test the differences of performance of the model between minus and sum operation. On the other hand, my tutor said that six blocks maybe the result of tuning parameters during training process. That’s why authors said the number of blocks of Context-Local depends on your inputs.</p>
+<p>where $F$ is the input features, $f_l$ is the function of local $Conv$, $F_c$ is the function of context $Conv$, $\Theta_l$ and $\Theta_c$ are respective parameters, and $CL$ is the desired context contrasted local features. <font color="red">As for the question that my tutor mentioned why is not sum, </font> I think the reason is that sum is not meet the blurred surrounding of theory. Since the result of sum is only sharp the local feature, the discriminal objects will still be dominated by salient objects and just a lesser degree. This is just my opinion, cause I didn’t try the code and test the differences of performance of the model between minus and sum operation. On the other hand, my tutor said that six blocks maybe the result of tuning parameters during training process. That’s why authors said the number of blocks of Context-Local depends on your inputs.</p>
 <h2 id="Gated-Multi-scale-Aggregation"><a href="#Gated-Multi-scale-Aggregation" class="headerlink" title="Gated Multi-scale Aggregation"></a>Gated Multi-scale Aggregation</h2><center>
     <img class="image" 
     style="width: 550px; height: 350px" 
@@ -400,7 +400,7 @@
 </center>
 <br/>
 
-<p>The idea of gated sum is easy to understand, but its details are little complicated. Let’s figure details out now. From the picture, we can know that the first step is info-skip layers consisting of $Conv+Sigmoid$ operations to generate information map. Then use the RNN to learn the relationship of these information maps which is important for the value of the Gate. In this step, the RNN could learn the relationship among features of hign and low layers. Next, the Global Refine just adds the global information and produce value of Gate. Final step, selectively aggreated score map through different value of Gate. Below are math equations of Gated Sum.</p>
+<p>The idea of gated sum is easy to understand, but its details are little complicated. Let’s figure details out now. From the picture, we can know that the first step is info-skip layers consisting of $Conv+Sigmoid$ operations to generate information map. Then use the RNN to learn the relationship of these information maps which is important for the value of the Gate. In this step, the RNN could learn the relationship among features of hign and low layers. Next, the Global Refine just adds the global information and produce value of Gate. Final step, selectively aggregated score map through different value of Gate. Below are math equations of Gated Sum.</p>
 <p>$$I_p^n=f_i^n(F_p^n,\Theta_i^n) \tag{2}$$ </p>
 <p>where $F_i^n$ is the function of $n$th info-skip layer $Conv+Sigmoid$ and $\Theta_i^n$ is its parameters. $I_p^n$ is an information map of size $H$ x $W$ x $1$ from corresponding feature. Then these information maps $I_p^n$ are inputted to RNN in sequence to learn their relationships:</p>
 <p>$$h_p^n=tanh \left ( W^n \begin{pmatrix}<br>h_p^{n-1} \newline<br>I_p^n<br>\end{pmatrix} \right ) \tag{3}$$</p>
@@ -420,7 +420,7 @@
 </center>
 <br/>
 
-<p>This experienment compares the performance of CCL with other current state of art models. It shows CCL is better than other models.</p>
+<p>This experiment compares the performance of CCL with other current state of art models. It shows CCL is better than other models.</p>
 <center>
     <img class="image" 
     style="width: 500px; height: 180px" 
