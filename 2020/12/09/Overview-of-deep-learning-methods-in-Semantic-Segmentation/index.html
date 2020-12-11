@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|charter:300,300italic,400,400italic,700,700italic|Georgia:300,300italic,400,400italic,700,700italic|Cambria:300,300italic,400,400italic,700,700italic|"Times+New+Roman":300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content=".image {      border-radius: 0.3125em;     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);      } .image_description {     display: inline-block;     color: #999;     font">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Overview of deep learning methods in Semantic Segmentation">
+<meta property="og:url" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/index.html">
+<meta property="og:site_name" content="MINGCHEN&#39;s Blog">
+<meta property="og:description" content=".image {      border-radius: 0.3125em;     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);      } .image_description {     display: inline-block;     color: #999;     font">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Examples%20of%20semantic%20segmentation.jpeg">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/CNN%20and%20FCN.png">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/FCN_skip_connected.png">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Visulization%20of%20Skip%20Connections.png">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/UNet.png">
+<meta property="article:published_time" content="2020-12-09T11:09:43.000Z">
+<meta property="article:modified_time" content="2020-12-11T11:29:00.182Z">
+<meta property="article:author" content="MINGCHEN">
+<meta property="article:tag" content="Overview">
+<meta property="article:tag" content="Deeplab">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Examples%20of%20semantic%20segmentation.jpeg">
+
+
+<link rel="canonical" href="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Overview of deep learning methods in Semantic Segmentation | MINGCHEN's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">MINGCHEN's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Just record and share something.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-Is-Semantic-Segmentation"><span class="nav-number">1.</span> <span class="nav-text">What Is Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fully-Convolutional-Neural-Network-FCN"><span class="nav-number">2.</span> <span class="nav-text">Fully Convolutional Neural Network (FCN)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation"><span class="nav-number">2.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contributions"><span class="nav-number">2.2.</span> <span class="nav-text">Contributions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UNet"><span class="nav-number">3.</span> <span class="nav-text">UNet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deeplab"><span class="nav-number">4.</span> <span class="nav-text">Deeplab</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MINGCHEN</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </section>
+      </div>
+        <div class="back-to-top animated">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MINGCHEN">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MINGCHEN's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Overview of deep learning methods in Semantic Segmentation
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-09 11:09:43" itemprop="dateCreated datePublished" datetime="2020-12-09T11:09:43+00:00">2020-12-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-12-11 11:29:00" itemprop="dateModified" datetime="2020-12-11T11:29:00+00:00">2020-12-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Semantic-Segmentation/" itemprop="url" rel="index"><span itemprop="name">Semantic Segmentation</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <style type="text/css" rel="stylesheet">
+.image { 
+    border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08); 
+    }
+.image_description {
+    display: inline-block;
+    color: #999;
+    font-size: 16px;
+    padding: 2px
+}
+</style>
+
+<p>This article tries to make a summary of the development of deep learning methods in Semantic Segmentation, and talk about the motivation, concept and characteristic of these mehtods. So, this post just focus on the deep learning methods.</p>
+<p><strong>The link of Chinese version of this post:</strong></p>
+<a id="more"></a>
+
+<h1 id="What-Is-Semantic-Segmentation"><a href="#What-Is-Semantic-Segmentation" class="headerlink" title="What Is Semantic Segmentation"></a>What Is Semantic Segmentation</h1><p>The first thing we need to know is that what is Semantic Segmentation. Semantic Segmentation is a kind of techniques to classify images in pixel level. Suppose you have a image with dogs, you need to classify every pixel of the image to cat or background. This is what Semantic Segmentation is doing [1]. Here I put examples of results of Semantic Segmentation to help you understand better.</p>
+<center>
+    <img class="image" 
+    style="width: 550px; height: 400px" 
+    src="Examples of semantic segmentation.jpeg">
+    <div class="image_description">Figure 1: Results of Semantic Segmentation [1].</div>
+</center>
+
+<h1 id="Fully-Convolutional-Neural-Network-FCN"><a href="#Fully-Convolutional-Neural-Network-FCN" class="headerlink" title="Fully Convolutional Neural Network (FCN)"></a>Fully Convolutional Neural Network (FCN)</h1><p>One of the very early Deep Convolutional Neural Networks DCNN used for Semantic Segmentation is FCN network [2]. </p>
+<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>Some shortcomings for CNN to apply on Semantic Segmentation.</p>
+<ul>
+<li>Loss of Spatial Information</li>
+<li>Computational Heavy</li>
+<li>Fixed Inputs</li>
+</ul>
+<p>The emergence of a new technology must be because the existing technology cannot meet the demand. Therefore, there are some problems for triditional CNN-based methods to apply on Semantic Segmentation. First problem is loss of spatial information due to down-sampling operations (pooling or convolution). Semantic Segmentation requires the location information of each pixel so that there is a score map to match the original image. In addition,  fixed inputs and computational heavy are problems as well because of the fully connected layer. For fixed inputs, we need to cut the images to feed the model which is called Patch classification. The question is that the size of patch is difficult to define. Moreover, the size of patch make us only learn local features, which will limit the performance of model. For computational heavy, we all know that fully connected layer contain many parameters that need to be trained.</p>
+<h2 id="Contributions"><a href="#Contributions" class="headerlink" title="Contributions"></a>Contributions</h2><p>To slove those problems that we talk about above, there are three contributions in the FCN networks, which also are differences from troditional CNN.</p>
+<ul>
+<li>None Fully Connected Layer</li>
+<li>Deconvolution Layer</li>
+<li>Skip Connections</li>
+</ul>
+<center>
+    <img class="image" 
+    style="width: 550px; height: 350px" 
+    src="CNN and FCN.png">
+    <div class="image_description">Figure 2: Transforming fully connected layers into convolution layers enables a classification net to output a heatmap [3].</div>
+</center>
+<br/>
+
+<p>The neural network above in Figure 2 is a traditional neural network AlexNet. After the convolutional layer, several fully connected layers are connected, and finally a probability vector of the entire input image is obtained. On the contrary, FCN changes 4096-node, 4096-node and  1000-node fully connected layers to convolutional layers containing 4096, 4096 and 1000 1×1 convolution kernels. After this layer, a two-dimensional feature map is obtained. These solve the fixed inputs problem and give the model the ability of predicting arbitrary-sized inputs. Moreover, because fully connected layers are replaced by convolutional layer, the number of parameters is reduced which solve the computational heavy problem.</p>
+<center>
+    <img class="image" 
+    style="width: 900px; height: 300px" 
+    src="FCN_skip_connected.png">
+    <div class="image_description">Figure 3: FCN network learns to combine coarse, high layer information with fine, low layer information [3].</div>
+</center>
+<br/>
+
+<center>
+    <img class="image" 
+    style="width: 550px; height: 250px" 
+    src="Visulization of Skip Connections.png">
+    <div class="image_description">Figure 4: Refining fully convolutional nets by fusing information
+from layers with deconvolutional operations [3].</div>
+</center>
+<br/>
+
+<p>From figure 3 and 4, we can see that there are three heatmaps which are produced by up-sampling operations (deconvolution). This is to solve the loss of spatial information problem. Combining fine layers and coarse layers (by using skip connections) lets the model make local predictions that respect global structure [1].</p>
+<p>FCN network is a landmark work for Semantic Segmentation, and a lot of subsequent work is based on it to improve. Although it has made a lot of contributions, there are still shortcomingsthe which are, the result of upsampling is still blurry and smooth, not sensitive to details in the image, and the spatial relationship of pixels is not considered. A variety of more advanced FCN-based approaches have been proposed to address these issues, including UNet, DeepLab [2].</p>
+<h1 id="UNet"><a href="#UNet" class="headerlink" title="UNet"></a>UNet</h1><center>
+    <img class="image" 
+    style="width: 650px; height: 450px" 
+    src="UNet.png">
+    <div class="image_description">Figure 4: U-net Architecture [4].</div>
+</center>
+<br/>
+
+<p>Differences between FCN and UNet</p>
+<ul>
+<li>Decoder</li>
+<li>Fusion of Features </li>
+</ul>
+<p>When you see the figure 4, may understand that why it is called UNet. It looks like a big U character. Compared with FCN network, the first feature of U-Net is that it is completely symmetrical, that is, the left side and the right side are very similar, while the FCN decoder is relatively simple, only using deconvolution operations, and then it does not keep up with the convolution structure. In this way, the high-resolution features from the encode part are combined with the up-sampled output. Then, successive convolutional layers can learn to assemble a more accurate output based on this information. </p>
+<p>The second difference is the way of fusion of skip connected features and up-sampled features, FCN uses summation, and UNet uses concatenation. In my opinion, the dimension of the feature map has not changed if uses summation, but each dimension contains more features. For ordinary classification tasks, which do not need to be up-sampled from the feature map to the original resolution, it is an efficient choice; concatenation retains more dimension/location information, which allows the subsequent layers to freely choose between shallow and deep features, which is better for Semantic Segmentation tasks.</p>
+<p>These are main differences in network structure. Next, we will look into another FCN-based work Deeplab.</p>
+<h1 id="Deeplab"><a href="#Deeplab" class="headerlink" title="Deeplab"></a>Deeplab</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
+<li>Harshit Kumar. (2019) ‘Quick intro to semantic segmentation: FCN, U-Net and DeepLab’ Technical Fridays, <a target="_blank" rel="noopener" href="https://kharshit.github.io/blog/2019/08/09/quick-intro-to-semantic-segmentation">https://kharshit.github.io/blog/2019/08/09/quick-intro-to-semantic-segmentation</a>.  </li>
+<li>Beeren Sahu. (2019) ‘The Evolution of Deeplab for Semantic Segmentation’ towards data science, <a target="_blank" rel="noopener" href="https://towardsdatascience.com/the-evolution-of-deeplab-for-semantic-segmentation-95082b025571">https://towardsdatascience.com/the-evolution-of-deeplab-for-semantic-segmentation-95082b025571</a>.</li>
+<li>Shelhamer, E., Long, J. and Darrell, T. (2017) ‘Fully Convolutional Networks for Semantic Segmentation’, IEEE Transactions on Pattern Analysis and Machine Intelligence, Pattern Analysis and Machine Intelligence, IEEE Transactions on, IEEE Trans. Pattern Anal. Mach. Intell, 39(4), pp. 640–651. doi: 10.1109/TPAMI.2016.2572683.</li>
+<li>Ronneberger, O., Fischer, P. and Brox, T., 2015. U-Net: Convolutional Networks For Biomedical Image Segmentation. [online] arXiv.org. Available at: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1505.04597">https://arxiv.org/abs/1505.04597</a> [Accessed 10 December 2020].</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Overview/" rel="tag"><i class="fa fa-tag"></i> Overview</a>
+              <a href="/tags/Deeplab/" rel="tag"><i class="fa fa-tag"></i> Deeplab</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/10/30/CVPR18-Context-Contrasted-Feature-and-Gated-Multi-scale-Aggregationfor-Scene-Segmentation/" rel="prev" title="[CVPR18] Context Contrasted Feature and Gated Multi Scale Aggregation for Scene Segmentation">
+                  <i class="fa fa-chevron-left"></i> [CVPR18] Context Contrasted Feature and Gated Multi Scale Aggregation for Scene Segmentation
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MINGCHEN</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '799c5e58b7d6284f21ac',
+      clientSecret: '4847a3a09afe4932a7029e2e12fa24ee902124fe',
+      repo        : 'UpChen.github.io',
+      owner       : 'UpChen',
+      admin       : ['UpChen'],
+      id          : '8a1bb6d1df4d2d3cc76d6f20e2d4b10d',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
