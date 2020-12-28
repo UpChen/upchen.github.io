@@ -26,7 +26,7 @@
 
   <meta name="description" content=".image {      border-radius: 0.3125em;     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);      } .image_description {     display: inline-block;     color: #999;     font">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Overview of deep learning methods in Semantic Segmentation">
+<meta property="og:title" content="Overview of Deep Learning Methods in Semantic Segmentation">
 <meta property="og:url" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/index.html">
 <meta property="og:site_name" content="MINGCHEN&#39;s Blog">
 <meta property="og:description" content=".image {      border-radius: 0.3125em;     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);      } .image_description {     display: inline-block;     color: #999;     font">
@@ -36,10 +36,20 @@
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/FCN_skip_connected.png">
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Visulization%20of%20Skip%20Connections.png">
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/UNet.png">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/normal%20convolution.gif">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/dilated%20convolution.gif">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Deeplab_v1.png">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Dalited%20convolution%20compare.png">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/SPP.png">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/ASPP.png">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Depthwise_Separable_Convolution.png">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Deeplabv3.png">
 <meta property="article:published_time" content="2020-12-09T11:09:43.000Z">
-<meta property="article:modified_time" content="2020-12-11T11:29:00.182Z">
+<meta property="article:modified_time" content="2020-12-28T18:23:23.517Z">
 <meta property="article:author" content="MINGCHEN">
 <meta property="article:tag" content="Overview">
+<meta property="article:tag" content="FCN">
+<meta property="article:tag" content="UNet">
 <meta property="article:tag" content="Deeplab">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Examples%20of%20semantic%20segmentation.jpeg">
@@ -58,7 +68,7 @@
   };
 </script>
 
-  <title>Overview of deep learning methods in Semantic Segmentation | MINGCHEN's Blog</title>
+  <title>Overview of Deep Learning Methods in Semantic Segmentation | MINGCHEN's Blog</title>
   
 
 
@@ -124,7 +134,7 @@
       <h1 class="site-title">MINGCHEN's Blog</h1>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">Just record and share something.</p>
+      <p class="site-subtitle" itemprop="description">Recording and sharing something.</p>
   </div>
 
   <div class="site-nav-right">
@@ -187,7 +197,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-Is-Semantic-Segmentation"><span class="nav-number">1.</span> <span class="nav-text">What Is Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fully-Convolutional-Neural-Network-FCN"><span class="nav-number">2.</span> <span class="nav-text">Fully Convolutional Neural Network (FCN)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation"><span class="nav-number">2.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contributions"><span class="nav-number">2.2.</span> <span class="nav-text">Contributions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UNet"><span class="nav-number">3.</span> <span class="nav-text">UNet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deeplab"><span class="nav-number">4.</span> <span class="nav-text">Deeplab</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-Is-Semantic-Segmentation"><span class="nav-number">1.</span> <span class="nav-text">What Is Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fully-Convolutional-Neural-Network-FCN-2014-Nov"><span class="nav-number">2.</span> <span class="nav-text">Fully Convolutional Neural Network (FCN) 2014 Nov</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation"><span class="nav-number">2.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contributions"><span class="nav-number">2.2.</span> <span class="nav-text">Contributions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UNet"><span class="nav-number">3.</span> <span class="nav-text">UNet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deeplab"><span class="nav-number">4.</span> <span class="nav-text">Deeplab</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Atrous-Convolution"><span class="nav-number">4.1.</span> <span class="nav-text">Atrous Convolution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deeplab-v2"><span class="nav-number">4.2.</span> <span class="nav-text">Deeplab v2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deeplab-v3-amp-v3"><span class="nav-number">4.3.</span> <span class="nav-text">Deeplab v3 &amp; v3++</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -214,7 +224,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -268,7 +278,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Overview of deep learning methods in Semantic Segmentation
+          Overview of Deep Learning Methods in Semantic Segmentation
         </h1>
 
         <div class="post-meta-container">
@@ -286,7 +296,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-12-11 11:29:00" itemprop="dateModified" datetime="2020-12-11T11:29:00+00:00">2020-12-11</time>
+        <time title="Modified: 2020-12-28 18:23:23" itemprop="dateModified" datetime="2020-12-28T18:23:23+00:00">2020-12-28</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -340,7 +350,7 @@
     <div class="image_description">Figure 1: Results of Semantic Segmentation [1].</div>
 </center>
 
-<h1 id="Fully-Convolutional-Neural-Network-FCN"><a href="#Fully-Convolutional-Neural-Network-FCN" class="headerlink" title="Fully Convolutional Neural Network (FCN)"></a>Fully Convolutional Neural Network (FCN)</h1><p>One of the very early Deep Convolutional Neural Networks DCNN used for Semantic Segmentation is FCN network [2]. </p>
+<h1 id="Fully-Convolutional-Neural-Network-FCN-2014-Nov"><a href="#Fully-Convolutional-Neural-Network-FCN-2014-Nov" class="headerlink" title="Fully Convolutional Neural Network (FCN) 2014 Nov"></a>Fully Convolutional Neural Network (FCN) 2014 Nov</h1><p>One of the very early Deep Convolutional Neural Networks DCNN used for Semantic Segmentation is FCN network [2]. </p>
 <h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>Some shortcomings for CNN to apply on Semantic Segmentation.</p>
 <ul>
 <li>Loss of Spatial Information</li>
@@ -382,7 +392,13 @@ from layers with deconvolutional operations [3].</div>
 
 <p>From figure 3 and 4, we can see that there are three heatmaps which are produced by up-sampling operations (deconvolution). This is to solve the loss of spatial information problem. Combining fine layers and coarse layers (by using skip connections) lets the model make local predictions that respect global structure [1].</p>
 <p>FCN network is a landmark work for Semantic Segmentation, and a lot of subsequent work is based on it to improve. Although it has made a lot of contributions, there are still shortcomingsthe which are, the result of upsampling is still blurry and smooth, not sensitive to details in the image, and the spatial relationship of pixels is not considered. A variety of more advanced FCN-based approaches have been proposed to address these issues, including UNet, DeepLab [2].</p>
-<h1 id="UNet"><a href="#UNet" class="headerlink" title="UNet"></a>UNet</h1><center>
+<h1 id="UNet"><a href="#UNet" class="headerlink" title="UNet"></a>UNet</h1><p>Differences between UNet and FCN</p>
+<ul>
+<li>Encoder-Decoder structure</li>
+<li>Fusion of Features </li>
+</ul>
+<p>Encoder-Decoder model is now widely used in Computer Vision. The encoder is usually is a pre-trained classification network like VGG/ResNet followed by a decoder network. The task of the decoder is to semantically project the discriminative features (lower resolution) learnt by the encoder onto the pixel space (higher resolution) to get a dense classification [2]. </p>
+<center>
     <img class="image" 
     style="width: 650px; height: 450px" 
     src="UNet.png">
@@ -390,19 +406,109 @@ from layers with deconvolutional operations [3].</div>
 </center>
 <br/>
 
-<p>Differences between FCN and UNet</p>
-<ul>
-<li>Decoder</li>
-<li>Fusion of Features </li>
-</ul>
-<p>When you see the figure 4, may understand that why it is called UNet. It looks like a big U character. Compared with FCN network, the first feature of U-Net is that it is completely symmetrical, that is, the left side and the right side are very similar, while the FCN decoder is relatively simple, only using deconvolution operations, and then it does not keep up with the convolution structure. In this way, the high-resolution features from the encode part are combined with the up-sampled output. Then, successive convolutional layers can learn to assemble a more accurate output based on this information. </p>
+<p>When you see the figure 4, may understand that why it is called UNet. It looks like a big U character. Compared with FCN network, UNet adopts the Encoder-Decoder structure and adds convolution operations after deconvolution. In this way, the high-resolution features from the encode part are combined with the up-sampled output. Then, successive convolutional layers can learn to assemble a more accurate output based on this information. </p>
 <p>The second difference is the way of fusion of skip connected features and up-sampled features, FCN uses summation, and UNet uses concatenation. In my opinion, the dimension of the feature map has not changed if uses summation, but each dimension contains more features. For ordinary classification tasks, which do not need to be up-sampled from the feature map to the original resolution, it is an efficient choice; concatenation retains more dimension/location information, which allows the subsequent layers to freely choose between shallow and deep features, which is better for Semantic Segmentation tasks.</p>
 <p>These are main differences in network structure. Next, we will look into another FCN-based work Deeplab.</p>
-<h1 id="Deeplab"><a href="#Deeplab" class="headerlink" title="Deeplab"></a>Deeplab</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
-<li>Harshit Kumar. (2019) ‘Quick intro to semantic segmentation: FCN, U-Net and DeepLab’ Technical Fridays, <a target="_blank" rel="noopener" href="https://kharshit.github.io/blog/2019/08/09/quick-intro-to-semantic-segmentation">https://kharshit.github.io/blog/2019/08/09/quick-intro-to-semantic-segmentation</a>.  </li>
+<h1 id="Deeplab"><a href="#Deeplab" class="headerlink" title="Deeplab"></a>Deeplab</h1><p>Before I introduce the deeplab, i will talk about the atrous convolution briefly.</p>
+<h2 id="Atrous-Convolution"><a href="#Atrous-Convolution" class="headerlink" title="Atrous Convolution"></a>Atrous Convolution</h2><p>Dilated/Atrous convolution also calls convolution with holes [5]. It just inserts holes in the standard convolution map to increase reception field. Moreover, it has one more hyper-parameter dilated rate, which is the interval in the kernel (e.g. the dilated rate of normal convolution is 1).</p>
+<center>
+    <span style="float:left">
+    <img class="image" 
+    style="width: 350px; height: 300px" 
+    src="normal convolution.gif">
+    <div class="image_description">Figure 5: Standard convolution with a 3 x 3 kernel [6].</div>
+    </span>
+    <span>
+    <img class="image" 
+    style="width: 350px; height: 300px" 
+    src="dilated convolution.gif">
+    <div class="image_description">Figure 6: Dilated convolution with a 3 x 3 kernel and dilated rate 2 [6].</div>
+    </span>
+</center>
+<br/>
+
+<p>In Deep CNN, we always use down-sampling (pooling or convolution) to increase reception field and reduce the number of parameters. This will lead to the  loss of internal data structure and spatial hierarchical information which are important and useful for Semantic Segmentation. However, dilated convolution can increase reception field:  not only not lost the spatial information, but also increase the reception field. In addition, atrous convolution can combine the convolution and up-sample operations, which saves additional memory and time. </p>
+<p>Next, we gonna look into the Deeplab.</p>
+<p>Differences between Deeplab and FCN</p>
+<ul>
+<li>Atrous Convolution</li>
+<li>Bi-linear Interpolation</li>
+<li>Conditional Random Field (CRF)</li>
+<li>Fusion of Features (same with UNet)</li>
+</ul>
+<center>
+    <img class="image" 
+    style="width: 650px; height: 350px" 
+    src="Deeplab_v1.png">
+    <div class="image_description">Figure 7: Model Illustration. The coarse score map from Deep Convolutional Neural Network (with fully convolutional layers) is upsampled by bi-linear interpolation. A fully connected CRF is applied to refine the segmentation result. Best viewed in color [7].</div>
+</center>
+<br/>
+
+<p>Deeplab v1 do some improvements for Semantic Segmentation on FCN networks. First of all, they use dilated convolution to upsample the resulting map, which the advantage is shown on figure 8. We can know that the performance of dilated convolution is better. </p>
+<center>
+    <img class="image" 
+    style="width: 550px; height: 330px" 
+    src="Dalited convolution compare.png">
+    <div class="image_description">Figure 8: Illustration of atrous convolution in 2-D. Top row: sparse feature extraction with standard convolution on a low resolution input feature map. Bottom row: Dense feature extraction with atrous convolution with rate r = 2, applied on a high resolution input feature map [8].</div>
+</center>
+<br/>
+
+<p>Then, the score map will be up-sample by Bi-linear Interpolation which is different from FCN. Linear interpolation is to determine the rgb value of the target position based on the rgb values of the pixels on both sides, and the function used is a polynomial function. The Bi-linear interpolation means linear interpolation in both the horizontal and vertical directions. However, the effect on performance of different up-sample ways depends on the task. It doesn’t mean that Bi-linear Interpolation is better than deconvolution on all tasks. So, author uses this way maybe the result of training. After the interpolation operation, the result of up-sample will be addressed by CRF. CRF involves some knowledge of probability graphs. In my own words,  it will address the score map by calculating the spatial distance between the pixel and the surrounding pixels and the difference in RGB value, so that the result of the feature map is more refined. Fully connected means that when calculating the current pixel, it must be calculated with all pixels in the feature map except for it. The obvious disadvantage of this method is that the amount of calculation is large. And this method has not been adopted in later versions (v3&amp;v3++) of deeplab, so it will not be explained in detail here. </p>
+<h2 id="Deeplab-v2"><a href="#Deeplab-v2" class="headerlink" title="Deeplab v2"></a>Deeplab v2</h2><p><strong>Atrous Spatial Pyramid</strong></p>
+<p>To further improve the performance of the Deeplab v1 architecture, they use Atrous Spatial Pyramid to address the problem of existence of object at multuple scales [2].</p>
+<center>
+    <span style="float:left">
+    <img class="image" 
+    style="width: 460px; height: 300px" 
+    src="SPP.png">
+    <div class="image_description">Figure 9: Spatial Pyramid Pooling (SPP) [9].</div>
+    </span>
+    <span>
+    <img class="image" 
+    style="width: 460px; height: 300px" 
+    src="ASPP.png">
+    <div class="image_description">Figure 10: Atrous Spatial Pyramid Pooling (ASPP) [10].</div>
+    </span>
+</center>
+<br/>
+
+<p>This idea is inspired by Spatial Pyramid Pooling (SPP). The essence of SPP is a multi-layer maxpool, just in order to generate a fixed size $a$ x $a$ output for featur maps of different sizes $n$ x $n$, then the size of sliding window and the number of stride must be adaptive adjusted. Then multiple pooling with different fixed output sizes are combined to form an SPP. </p>
+<p>ASPP is to apply multiple atrous convolution with different sampling rates to the input feature map, and fuse together. As objects of the same class can have different scales in the image, ASPP helps to account for different object scales which can improve the accuracy [2]. </p>
+<h2 id="Deeplab-v3-amp-v3"><a href="#Deeplab-v3-amp-v3" class="headerlink" title="Deeplab v3 &amp; v3++"></a>Deeplab v3 &amp; v3++</h2><p>Here i will discuss v3 and v3++ as one model. </p>
+<ul>
+<li>Depthwise Separable Convolution</li>
+<li>Encoder-Decoder Structure</li>
+</ul>
+<center>
+    <img class="image" 
+    style="width: 650px; height: 180px" 
+    src="Depthwise_Separable_Convolution.png">
+    <div class="image_description">Figure 11: Depthwise separable convolution for atrous convolution [10].</div>
+</center>
+<br/>
+
+<p>Depthwise separable convolution is to increase computational efficiency. It decomposes a standard convolution into (a) a depthwise convolution (applying a single filter for each input channel) and (b) a pointwise convolution (combining the outputs from depthwise convolution across channels). For example, suppose you’ve an input RGB image of size $12$ x $12$ x $3$, the normal convolution operation using 256 filters of $5$ x $5$ x $3$  without padding and stride of 1 gives the output of size $8$ x $8$ x $256$. This whole operations costs $256$ x $5$ x $5$ x $3$ x $8$ x $8=1,228,800$ multiplications. If you use depthwise separable convolution, This whole operation took $3$ x $5$ x $5$ x $8$ x $8$ + $256$ x $1$ x $1$ x $3$ x $8$ x $8 = 53,952$ multiplication, which is far less compared to that of normal convolution [1]. Deeplab explores atrous separable convolution where atrous convolution is adopted in the depthwise convolution as well.</p>
+<center>
+    <img class="image" 
+    style="width: 730px; height: 430px" 
+    src="Deeplabv3.png">
+    <div class="image_description">Figure 12: DeepLabv3+ extends DeepLabv3 by employing a encoder-decoder structure [10].</div>
+</center>
+<br/>
+
+<p>From the figure 12, we can see changes about the decoder part which are to get a more refined result than DeepLabv3 especially along object boundaries. Specifically, after DeepLabV3+ samples 4x on the DeepLabv3 model output, then use $1$ x $1$ convolution reduces the dimensionality of DCNN’s output and concats it.<br>Finaly, result is up-sampling by Bilinear interpolation after using the $3$ x $3$ convolution.</p>
+<p>Hope you have some understanding of the methods of semantic segmentation through this article, feel free to comment.</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
+<li>Kharshit Kumar. (2019) ‘Quick intro to semantic segmentation: FCN, U-Net and DeepLab’ Technical Fridays, <a target="_blank" rel="noopener" href="https://kharshit.github.io/blog/2019/08/09/quick-intro-to-semantic-segmentation">https://kharshit.github.io/blog/2019/08/09/quick-intro-to-semantic-segmentation</a>.  </li>
 <li>Beeren Sahu. (2019) ‘The Evolution of Deeplab for Semantic Segmentation’ towards data science, <a target="_blank" rel="noopener" href="https://towardsdatascience.com/the-evolution-of-deeplab-for-semantic-segmentation-95082b025571">https://towardsdatascience.com/the-evolution-of-deeplab-for-semantic-segmentation-95082b025571</a>.</li>
 <li>Shelhamer, E., Long, J. and Darrell, T. (2017) ‘Fully Convolutional Networks for Semantic Segmentation’, IEEE Transactions on Pattern Analysis and Machine Intelligence, Pattern Analysis and Machine Intelligence, IEEE Transactions on, IEEE Trans. Pattern Anal. Mach. Intell, 39(4), pp. 640–651. doi: 10.1109/TPAMI.2016.2572683.</li>
 <li>Ronneberger, O., Fischer, P. and Brox, T., 2015. U-Net: Convolutional Networks For Biomedical Image Segmentation. [online] arXiv.org. Available at: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1505.04597">https://arxiv.org/abs/1505.04597</a> [Accessed 10 December 2020].</li>
+<li>小草AI (2019), 腾讯云, <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1467163">https://cloud.tencent.com/developer/article/1467163</a></li>
+<li>vdumoulin, GitHub, <a target="_blank" rel="noopener" href="https://github.com/vdumoulin/conv_arithmetic">https://github.com/vdumoulin/conv_arithmetic</a></li>
+<li>Chen, L., Papandreou, G., Kokkinos, I., Murphy, K. and Yuille, A., 2016. Semantic Image Segmentation With Deep Convolutional Nets And Fully Connected Crfs. [online] arXiv.org. Available at: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1412.7062">https://arxiv.org/abs/1412.7062</a> [Accessed 15 December 2020].</li>
+<li>L. Chen, G. Papandreou, I. Kokkinos, K. Murphy and A. L. Yuille, “DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs,” in IEEE Transactions on Pattern Analysis and Machine Intelligence, vol. 40, no. 4, pp. 834-848, 1 April 2018, doi: 10.1109/TPAMI.2017.2699184.</li>
+<li>He, K., Zhang, X., Ren, S. and Sun, J., 2020. Spatial Pyramid Pooling In Deep Convolutional Networks For Visual Recognition. arXiv.</li>
+<li>Chen, L., Papandreou, G., Kokkinos, I., Murphy, K. and Yuille, A., 2020. Deeplab: Semantic Image Segmentation With Deep Convolutional Nets, Atrous Convolution, And Fully Connected Crfs. [online] arXiv.org. Available at: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1606.00915v2">https://arxiv.org/abs/1606.00915v2</a> [Accessed 26 December 2020].</li>
 </ol>
 
     </div>
@@ -414,6 +520,8 @@ from layers with deconvolutional operations [3].</div>
     <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/Overview/" rel="tag"><i class="fa fa-tag"></i> Overview</a>
+              <a href="/tags/FCN/" rel="tag"><i class="fa fa-tag"></i> FCN</a>
+              <a href="/tags/UNet/" rel="tag"><i class="fa fa-tag"></i> UNet</a>
               <a href="/tags/Deeplab/" rel="tag"><i class="fa fa-tag"></i> Deeplab</a>
           </div>
 
@@ -539,6 +647,50 @@ from layers with deconvolutional operations [3].</div>
   
 
   
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
