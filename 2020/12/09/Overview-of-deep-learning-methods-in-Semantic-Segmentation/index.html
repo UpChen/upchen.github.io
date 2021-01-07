@@ -50,7 +50,7 @@
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Depthwise_Separable_Convolution.png">
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Deeplabv3.png">
 <meta property="article:published_time" content="2020-12-09T11:09:43.000Z">
-<meta property="article:modified_time" content="2021-01-07T21:03:19.857Z">
+<meta property="article:modified_time" content="2021-01-07T21:14:15.252Z">
 <meta property="article:author" content="MINGCHEN">
 <meta property="article:tag" content="Overview">
 <meta property="article:tag" content="FCN">
@@ -202,7 +202,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-Is-Semantic-Segmentation"><span class="nav-number">1.</span> <span class="nav-text">What Is Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fully-Convolutional-Neural-Network-FCN"><span class="nav-number">2.</span> <span class="nav-text">Fully Convolutional Neural Network (FCN)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation"><span class="nav-number">2.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contributions"><span class="nav-number">2.2.</span> <span class="nav-text">Contributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problems-of-FCN"><span class="nav-number">2.3.</span> <span class="nav-text">Problems of FCN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UNet"><span class="nav-number">3.</span> <span class="nav-text">UNet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UNet-is-good-at-Biomedical-Image-Segmentation"><span class="nav-number">3.1.</span> <span class="nav-text">UNet is good at Biomedical Image Segmentation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deeplab"><span class="nav-number">4.</span> <span class="nav-text">Deeplab</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Atrous-Convolution"><span class="nav-number">4.1.</span> <span class="nav-text">Atrous Convolution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deeplab-v2"><span class="nav-number">4.2.</span> <span class="nav-text">Deeplab v2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deeplab-v3-amp-v3"><span class="nav-number">4.3.</span> <span class="nav-text">Deeplab v3 &amp; v3++</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-Is-Semantic-Segmentation"><span class="nav-number">1.</span> <span class="nav-text">What Is Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fully-Convolutional-Neural-Network-FCN"><span class="nav-number">2.</span> <span class="nav-text">Fully Convolutional Neural Network (FCN)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation"><span class="nav-number">2.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contributions"><span class="nav-number">2.2.</span> <span class="nav-text">Contributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problems-of-FCN"><span class="nav-number">2.3.</span> <span class="nav-text">Problems of FCN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UNet"><span class="nav-number">3.</span> <span class="nav-text">UNet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Contributions-1"><span class="nav-number">3.1.</span> <span class="nav-text">Contributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advantages-of-UNet"><span class="nav-number">3.2.</span> <span class="nav-text">Advantages of UNet</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deeplab"><span class="nav-number">4.</span> <span class="nav-text">Deeplab</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Deeplab-v1"><span class="nav-number">4.1.</span> <span class="nav-text">Deeplab v1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deeplab-v2"><span class="nav-number">4.2.</span> <span class="nav-text">Deeplab v2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deeplab-v3-amp-v3"><span class="nav-number">4.3.</span> <span class="nav-text">Deeplab v3 &amp; v3++</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -301,7 +301,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-01-07 21:03:19" itemprop="dateModified" datetime="2021-01-07T21:03:19+00:00">2021-01-07</time>
+        <time title="Modified: 2021-01-07 21:14:15" itemprop="dateModified" datetime="2021-01-07T21:14:15+00:00">2021-01-07</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -405,16 +405,14 @@ from layers with deconvolutional operations [4].</div>
 <br/>
 
 <p>From figure 4 and 5, we can see that there are three heatmaps which are produced by up-sampling operations (deconvolution). This is to solve the loss of spatial information problem. Combining fine layers and coarse layers (by using skip layers) lets the model make local predictions that respect global structure [1].</p>
-<h2 id="Problems-of-FCN"><a href="#Problems-of-FCN" class="headerlink" title="Problems of FCN"></a>Problems of FCN</h2><ul>
-<li>Result of Upsampling is Blurry and Smooth</li>
-</ul>
+<h2 id="Problems-of-FCN"><a href="#Problems-of-FCN" class="headerlink" title="Problems of FCN"></a>Problems of FCN</h2><p><strong>Result of Upsampling is Blurry and Smooth</strong></p>
 <p>FCN network is a landmark work for Semantic Segmentation, and a lot of subsequent work is based on it to improve. Although it has made a lot of contributions, there are still shortcomings which are, the result of upsampling is still blurry and smooth, not sensitive to details in the image, and the spatial relationship of pixels is not considered. A variety of more advanced FCN-based approaches have been proposed to address these issues, including UNet, DeepLab [2].</p>
-<h1 id="UNet"><a href="#UNet" class="headerlink" title="UNet"></a>UNet</h1><p>Differences between UNet and FCN</p>
+<h1 id="UNet"><a href="#UNet" class="headerlink" title="UNet"></a>UNet</h1><h2 id="Contributions-1"><a href="#Contributions-1" class="headerlink" title="Contributions"></a>Contributions</h2><p>Differences between UNet and FCN</p>
 <ul>
 <li>Encoder-Decoder Structure</li>
 <li>Fusion of Features （Concatenation）</li>
 </ul>
-<p>Encoder-Decoder model is now widely used in Computer Vision. The encoder is usually is a pre-trained classification network like VGG/ResNet followed by a decoder network. The task of the decoder is to semantically project the discriminative features (lower resolution) learnt by the encoder onto the pixel space (higher resolution) to get a dense classification [2]. </p>
+<p><strong>Encoder-Decoder model</strong> is now widely used in Computer Vision. The encoder is usually is a pre-trained classification network like VGG/ResNet followed by a decoder network. The task of the decoder is to semantically project the discriminative features (lower resolution) learnt by the encoder onto the pixel space (higher resolution) to get a dense classification [2]. </p>
 <center>
     <img class="image" 
     style="width: 650px; height: 450px" 
@@ -425,7 +423,7 @@ from layers with deconvolutional operations [4].</div>
 
 <p>When you see the figure 6, may understand that why it is called UNet. It looks like a big U character. Compared with FCN network, UNet adopts the Encoder-Decoder structure and adds convolution operations after deconvolution. In this way, the high-resolution features from the encode part are combined with the up-sampled output. Then, successive convolutional layers can learn to assemble a more accurate output based on this information. </p>
 <p>The second difference is the way of fusion of skip connected features and up-sampled features, FCN uses summation, and UNet uses concatenation. In my opinion, the dimension of the feature map has not changed if uses summation, but each dimension contains more features. For ordinary classification tasks, which do not need to be up-sampled from the feature map to the original resolution, it is an efficient choice; concatenation retains more dimension/location information, which allows the subsequent layers to freely choose between shallow and deep features, which is better for Semantic Segmentation tasks.</p>
-<h2 id="UNet-is-good-at-Biomedical-Image-Segmentation"><a href="#UNet-is-good-at-Biomedical-Image-Segmentation" class="headerlink" title="UNet is good at Biomedical Image Segmentation"></a>UNet is good at Biomedical Image Segmentation</h2><p>The UNnet model performs well in medical image segmentation, and it is used as the basebone in many excellent medical image segmentation networks recent years. Compare with normal images, medical images sematics are relatively simple and the structure is relatively fixed, so both high-level semantic information and low-level features are very important (UNet’s skip layer and U-shaped structure come in handy). Moreover, medical images are difficult to collect. Therefore, the model we design should not be too large. If there are too many parameters, it will easily lead to overfitting.</p>
+<h2 id="Advantages-of-UNet"><a href="#Advantages-of-UNet" class="headerlink" title="Advantages of UNet"></a>Advantages of UNet</h2><p>The UNnet model <strong>performs well in medical image segmentation</strong>, and it is used as the basebone in many excellent medical image segmentation networks recent years. Compare with normal images, medical images sematics are relatively simple and the structure is relatively fixed, so both high-level semantic information and low-level features are very important (UNet’s skip layer and U-shaped structure come in handy). Moreover, medical images are difficult to collect. Therefore, the model we design should not be too large. If there are too many parameters, it will easily lead to overfitting.</p>
 <center>
     <img class="image" 
     style="width: 700px; height: 220px" 
@@ -435,7 +433,8 @@ from layers with deconvolutional operations [4].</div>
 
 
 <h1 id="Deeplab"><a href="#Deeplab" class="headerlink" title="Deeplab"></a>Deeplab</h1><p>Before I introduce the deeplab, i will talk about the atrous convolution briefly.</p>
-<h2 id="Atrous-Convolution"><a href="#Atrous-Convolution" class="headerlink" title="Atrous Convolution"></a>Atrous Convolution</h2><p>Dilated/Atrous convolution also calls convolution with holes [6]. It just inserts holes in the standard convolution map to increase reception field. Moreover, it has one more hyper-parameter dilated rate, which is the interval in the kernel (e.g. the dilated rate of normal convolution is 1).</p>
+<p><strong>Atrous Convolution</strong></p>
+<p>Dilated/Atrous convolution also calls convolution with holes [6]. It just inserts holes in the standard convolution map to increase reception field. Moreover, it has one more hyper-parameter dilated rate, which is the interval in the kernel (e.g. the dilated rate of normal convolution is 1).</p>
 <center>
     <span style="float:left">
     <img class="image" 
@@ -454,7 +453,7 @@ from layers with deconvolutional operations [4].</div>
 
 <p>In Deep CNN, we always use down-sampling (pooling or convolution) to increase reception field and reduce the number of parameters. This will lead to the  loss of internal data structure and spatial hierarchical information which are important and useful for Semantic Segmentation. However, dilated convolution can increase reception field:  not only not lose the spatial information, but also increase the reception field. In addition, atrous convolution can combine the convolution and up-sample operations, which saves additional memory and time. </p>
 <p>Next, we gonna look into the Deeplab.</p>
-<p>Differences between Deeplab and FCN</p>
+<h2 id="Deeplab-v1"><a href="#Deeplab-v1" class="headerlink" title="Deeplab v1"></a>Deeplab v1</h2><p>Differences between Deeplab and FCN</p>
 <ul>
 <li>Atrous Convolution </li>
 <li>Bi-linear Interpolation to upsampling</li>
