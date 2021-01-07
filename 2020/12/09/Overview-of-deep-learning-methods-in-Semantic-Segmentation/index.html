@@ -31,28 +31,33 @@
 <meta property="og:site_name" content="MINGCHEN&#39;s Blog">
 <meta property="og:description" content=".image {      border-radius: 0.3125em;     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);      } .image_description {     display: inline-block;     color: #999;     font">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Examples%20of%20semantic%20segmentation.jpeg">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Instance.png">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/fully%20connected%20layer.jpg">
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/CNN%20and%20FCN.png">
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/FCN_skip_connected.png">
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Visulization%20of%20Skip%20Connections.png">
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/UNet.png">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Result%20of%20Unet.png">
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/normal%20convolution.gif">
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/dilated%20convolution.gif">
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Deeplab_v1.png">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/deeplab_v1_model.png">
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Dalited%20convolution%20compare.png">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Results%20of%20CRF.png">
+<meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/FCNvsDeeplab.png">
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/SPP.png">
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/ASPP.png">
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Depthwise_Separable_Convolution.png">
 <meta property="og:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Deeplabv3.png">
 <meta property="article:published_time" content="2020-12-09T11:09:43.000Z">
-<meta property="article:modified_time" content="2020-12-30T12:05:48.544Z">
+<meta property="article:modified_time" content="2021-01-07T21:03:19.857Z">
 <meta property="article:author" content="MINGCHEN">
 <meta property="article:tag" content="Overview">
 <meta property="article:tag" content="FCN">
 <meta property="article:tag" content="UNet">
 <meta property="article:tag" content="Deeplab">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Examples%20of%20semantic%20segmentation.jpeg">
+<meta name="twitter:image" content="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/Instance.png">
 
 
 <link rel="canonical" href="http://example.com/2020/12/09/Overview-of-deep-learning-methods-in-Semantic-Segmentation/">
@@ -197,7 +202,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-Is-Semantic-Segmentation"><span class="nav-number">1.</span> <span class="nav-text">What Is Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fully-Convolutional-Neural-Network-FCN"><span class="nav-number">2.</span> <span class="nav-text">Fully Convolutional Neural Network (FCN)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation"><span class="nav-number">2.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contributions"><span class="nav-number">2.2.</span> <span class="nav-text">Contributions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UNet"><span class="nav-number">3.</span> <span class="nav-text">UNet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deeplab"><span class="nav-number">4.</span> <span class="nav-text">Deeplab</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Atrous-Convolution"><span class="nav-number">4.1.</span> <span class="nav-text">Atrous Convolution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deeplab-v2"><span class="nav-number">4.2.</span> <span class="nav-text">Deeplab v2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deeplab-v3-amp-v3"><span class="nav-number">4.3.</span> <span class="nav-text">Deeplab v3 &amp; v3++</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-Is-Semantic-Segmentation"><span class="nav-number">1.</span> <span class="nav-text">What Is Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fully-Convolutional-Neural-Network-FCN"><span class="nav-number">2.</span> <span class="nav-text">Fully Convolutional Neural Network (FCN)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation"><span class="nav-number">2.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contributions"><span class="nav-number">2.2.</span> <span class="nav-text">Contributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problems-of-FCN"><span class="nav-number">2.3.</span> <span class="nav-text">Problems of FCN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UNet"><span class="nav-number">3.</span> <span class="nav-text">UNet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UNet-is-good-at-Biomedical-Image-Segmentation"><span class="nav-number">3.1.</span> <span class="nav-text">UNet is good at Biomedical Image Segmentation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deeplab"><span class="nav-number">4.</span> <span class="nav-text">Deeplab</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Atrous-Convolution"><span class="nav-number">4.1.</span> <span class="nav-text">Atrous Convolution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deeplab-v2"><span class="nav-number">4.2.</span> <span class="nav-text">Deeplab v2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deeplab-v3-amp-v3"><span class="nav-number">4.3.</span> <span class="nav-text">Deeplab v3 &amp; v3++</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -296,7 +301,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-12-30 12:05:48" itemprop="dateModified" datetime="2020-12-30T12:05:48+00:00">2020-12-30</time>
+        <time title="Modified: 2021-01-07 21:03:19" itemprop="dateModified" datetime="2021-01-07T21:03:19+00:00">2021-01-07</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -342,42 +347,51 @@
 <p><strong>The Chinese version of this post :</strong> <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/338591997">https://zhuanlan.zhihu.com/p/338591997</a></p>
 <a id="more"></a>
 
-<h1 id="What-Is-Semantic-Segmentation"><a href="#What-Is-Semantic-Segmentation" class="headerlink" title="What Is Semantic Segmentation"></a>What Is Semantic Segmentation</h1><p>The first thing we need to know is that what is Semantic Segmentation. Semantic Segmentation is a kind of techniques to classify images in pixel level. Suppose you have a image with dogs, you need to classify every pixel of the image to dog or background. This is what Semantic Segmentation is doing [1]. Here I put examples of results of Semantic Segmentation to help you understand better.</p>
+<h1 id="What-Is-Semantic-Segmentation"><a href="#What-Is-Semantic-Segmentation" class="headerlink" title="What Is Semantic Segmentation"></a>What Is Semantic Segmentation</h1><p>The first thing we need to know is that what is Semantic Segmentation. Semantic Segmentation is a kind of techniques to classify images in pixel level. Suppose you have a image with cups, bottles and cubes, you need to classify every pixel of the image to different objects or background. This is what Semantic Segmentation is doing [1]. Here I put examples of results of Semantic Segmentation to help you understand better. </p>
 <center>
     <img class="image" 
-    style="width: 550px; height: 400px" 
-    src="Examples of semantic segmentation.jpeg">
-    <div class="image_description">Figure 1: Results of Semantic Segmentation [1].</div>
+    style="width: 850px; height: 200px" 
+    src="Instance.png">
+    <div class="image_description">Figure 1: Coarse to fine inference [1].</div>
 </center>
 
+<p>From figure 1, one thing we need to know is that Semantic Segmentation is little different from Instance Segmentation which is separate labels for different instances of the same class. Therefore, last image of figure 1 classifies the different cubes.</p>
 <h1 id="Fully-Convolutional-Neural-Network-FCN"><a href="#Fully-Convolutional-Neural-Network-FCN" class="headerlink" title="Fully Convolutional Neural Network (FCN)"></a>Fully Convolutional Neural Network (FCN)</h1><p>One of the very early Deep Convolutional Neural Networks DCNN used for Semantic Segmentation is FCN network [2]. </p>
 <h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>Some shortcomings for CNN to apply on Semantic Segmentation.</p>
 <ul>
-<li>Loss of Spatial Information</li>
-<li>Computational Heavy</li>
-<li>Fixed Inputs</li>
+<li>Convolution: Loss of Spatial Information</li>
+<li>Fully Connected Layer: (1)Fixed Inputs (2)Loss of Spatial Information </li>
 </ul>
-<p>The emergence of a new technology must be because the existing technology cannot meet the demand. Therefore, there are some problems for traditional CNN-based methods to apply on Semantic Segmentation. First problem is loss of spatial information due to down-sampling operations (pooling or convolution). Semantic Segmentation requires the location information of each pixel so that there is a score map to match the original image. In addition,  fixed inputs and computational heavy are problems as well because of the fully connected layer. For fixed inputs, we need to cut the images to feed the model which is called Patch classification. The question is that the size of patch is difficult to define. Moreover, the size of patch make us only learn local features, which will limit the performance of model. For computational heavy, we all know that fully connected layer contain many parameters that need to be trained.</p>
+<p>The emergence of a new technology is because the existing technology cannot meet the demand. Therefore, there are some problems for traditional CNN-based methods to apply on Semantic Segmentation. First problem is loss of spatial information due to down-sampling operations (pooling or convolution). Semantic Segmentation requires the location information of each pixel so that there is a score map to match the original image. </p>
+<p>In addition, there are two more problems because of the fully connected layer. For fixed inputs, we need to cut the images to feed the model which is called Patch classification. The question is that the size of patch is difficult to define. Moreover, the size of patch make us only learn local features, which will limit the performance of model. </p>
+<center>
+    <img class="image" 
+    style="width: 550px; height: 300px" 
+    src="fully connected layer.jpg">
+    <div class="image_description">Figure 2: Example of fully connected layer [3].</div>
+</center>
+
+<p>For this loss of spatial information, we can know from the figure 2, the fully connected layer combines the feature map into one value which is good for classification task, but harmful for segmentation.</p>
 <h2 id="Contributions"><a href="#Contributions" class="headerlink" title="Contributions"></a>Contributions</h2><p>To solve those problems that we talk about above, there are three contributions in the FCN networks, which also are differences from traditional CNN.</p>
 <ul>
-<li>None Fully Connected Layer</li>
-<li>Deconvolution Layer</li>
-<li>Skip Connections</li>
+<li>Fully Connected Layer is replaced by 1x1 convolution</li>
+<li>Deconvolution Layer to recover the loss of spatial information</li>
+<li>Skip Layer to integrate different scales of feature</li>
 </ul>
 <center>
     <img class="image" 
     style="width: 550px; height: 350px" 
     src="CNN and FCN.png">
-    <div class="image_description">Figure 2: Transforming fully connected layers into convolution layers enables a classification net to output a heatmap [3].</div>
+    <div class="image_description">Figure 3: Transforming fully connected layers into convolution layers enables a classification net to output a heatmap [4].</div>
 </center>
 <br/>
 
-<p>The neural network above in Figure 2 is a traditional neural network AlexNet. After the convolutional layer, several fully connected layers are connected, and finally a probability vector of the entire input image is obtained. On the contrary, FCN changes 4096-node, 4096-node and  1000-node fully connected layers to convolutional layers containing 4096, 4096 and 1000 1×1 convolution kernels. After this layer, a two-dimensional feature map is obtained. These solve the fixed inputs problem and give the model the ability of predicting arbitrary-sized inputs. Moreover, because fully connected layers are replaced by convolutional layer, the number of parameters is reduced which solve the computational heavy problem.</p>
+<p>The neural network above in Figure 3 is a traditional neural network AlexNet. After the convolutional layer, several fully connected layers are connected, and finally a probability vector of the entire input image is obtained. On the contrary, FCN changes 4096-node, 4096-node and  1000-node fully connected layers to convolutional layers containing 4096, 4096 and 1000 1×1 convolution kernels. After this layer, a two-dimensional feature map is obtained. These solve the fixed inputs problem and give the model the ability of predicting arbitrary-sized inputs. Moreover, because fully connected layers are replaced by convolutional layer, the loss of spatial caused by the fully connected layer is solved. </p>
 <center>
     <img class="image" 
     style="width: 900px; height: 300px" 
     src="FCN_skip_connected.png">
-    <div class="image_description">Figure 3: FCN network learns to combine coarse, high layer information with fine, low layer information [3].</div>
+    <div class="image_description">Figure 4: FCN network learns to combine coarse, high layer information with fine, low layer information [4].</div>
 </center>
 <br/>
 
@@ -385,75 +399,111 @@
     <img class="image" 
     style="width: 550px; height: 250px" 
     src="Visulization of Skip Connections.png">
-    <div class="image_description">Figure 4: Refining fully convolutional nets by fusing information
-from layers with deconvolutional operations [3].</div>
+    <div class="image_description">Figure 5: Refining fully convolutional nets by fusing information
+from layers with deconvolutional operations [4].</div>
 </center>
 <br/>
 
-<p>From figure 3 and 4, we can see that there are three heatmaps which are produced by up-sampling operations (deconvolution). This is to solve the loss of spatial information problem. Combining fine layers and coarse layers (by using skip connections) lets the model make local predictions that respect global structure [1].</p>
+<p>From figure 4 and 5, we can see that there are three heatmaps which are produced by up-sampling operations (deconvolution). This is to solve the loss of spatial information problem. Combining fine layers and coarse layers (by using skip layers) lets the model make local predictions that respect global structure [1].</p>
+<h2 id="Problems-of-FCN"><a href="#Problems-of-FCN" class="headerlink" title="Problems of FCN"></a>Problems of FCN</h2><ul>
+<li>Result of Upsampling is Blurry and Smooth</li>
+</ul>
 <p>FCN network is a landmark work for Semantic Segmentation, and a lot of subsequent work is based on it to improve. Although it has made a lot of contributions, there are still shortcomings which are, the result of upsampling is still blurry and smooth, not sensitive to details in the image, and the spatial relationship of pixels is not considered. A variety of more advanced FCN-based approaches have been proposed to address these issues, including UNet, DeepLab [2].</p>
 <h1 id="UNet"><a href="#UNet" class="headerlink" title="UNet"></a>UNet</h1><p>Differences between UNet and FCN</p>
 <ul>
-<li>Encoder-Decoder structure</li>
-<li>Fusion of Features </li>
+<li>Encoder-Decoder Structure</li>
+<li>Fusion of Features （Concatenation）</li>
 </ul>
 <p>Encoder-Decoder model is now widely used in Computer Vision. The encoder is usually is a pre-trained classification network like VGG/ResNet followed by a decoder network. The task of the decoder is to semantically project the discriminative features (lower resolution) learnt by the encoder onto the pixel space (higher resolution) to get a dense classification [2]. </p>
 <center>
     <img class="image" 
     style="width: 650px; height: 450px" 
     src="UNet.png">
-    <div class="image_description">Figure 4: U-net Architecture [4].</div>
+    <div class="image_description">Figure 6: U-net Architecture [5].</div>
 </center>
 <br/>
 
-<p>When you see the figure 4, may understand that why it is called UNet. It looks like a big U character. Compared with FCN network, UNet adopts the Encoder-Decoder structure and adds convolution operations after deconvolution. In this way, the high-resolution features from the encode part are combined with the up-sampled output. Then, successive convolutional layers can learn to assemble a more accurate output based on this information. </p>
+<p>When you see the figure 6, may understand that why it is called UNet. It looks like a big U character. Compared with FCN network, UNet adopts the Encoder-Decoder structure and adds convolution operations after deconvolution. In this way, the high-resolution features from the encode part are combined with the up-sampled output. Then, successive convolutional layers can learn to assemble a more accurate output based on this information. </p>
 <p>The second difference is the way of fusion of skip connected features and up-sampled features, FCN uses summation, and UNet uses concatenation. In my opinion, the dimension of the feature map has not changed if uses summation, but each dimension contains more features. For ordinary classification tasks, which do not need to be up-sampled from the feature map to the original resolution, it is an efficient choice; concatenation retains more dimension/location information, which allows the subsequent layers to freely choose between shallow and deep features, which is better for Semantic Segmentation tasks.</p>
-<p>These are main differences in network structure. Next, we will look into another FCN-based work Deeplab.</p>
+<h2 id="UNet-is-good-at-Biomedical-Image-Segmentation"><a href="#UNet-is-good-at-Biomedical-Image-Segmentation" class="headerlink" title="UNet is good at Biomedical Image Segmentation"></a>UNet is good at Biomedical Image Segmentation</h2><p>The UNnet model performs well in medical image segmentation, and it is used as the basebone in many excellent medical image segmentation networks recent years. Compare with normal images, medical images sematics are relatively simple and the structure is relatively fixed, so both high-level semantic information and low-level features are very important (UNet’s skip layer and U-shaped structure come in handy). Moreover, medical images are difficult to collect. Therefore, the model we design should not be too large. If there are too many parameters, it will easily lead to overfitting.</p>
+<center>
+    <img class="image" 
+    style="width: 700px; height: 220px" 
+    src="Result of Unet.png">
+    <div class="image_description">Figure 7: Segmentation results of U-net. (a),(c) are images of dataset. (b),(d) are segmentation results (random colored masks) and ground truth (yellow border)[5]. </div>
+</center>
+
+
 <h1 id="Deeplab"><a href="#Deeplab" class="headerlink" title="Deeplab"></a>Deeplab</h1><p>Before I introduce the deeplab, i will talk about the atrous convolution briefly.</p>
-<h2 id="Atrous-Convolution"><a href="#Atrous-Convolution" class="headerlink" title="Atrous Convolution"></a>Atrous Convolution</h2><p>Dilated/Atrous convolution also calls convolution with holes [5]. It just inserts holes in the standard convolution map to increase reception field. Moreover, it has one more hyper-parameter dilated rate, which is the interval in the kernel (e.g. the dilated rate of normal convolution is 1).</p>
+<h2 id="Atrous-Convolution"><a href="#Atrous-Convolution" class="headerlink" title="Atrous Convolution"></a>Atrous Convolution</h2><p>Dilated/Atrous convolution also calls convolution with holes [6]. It just inserts holes in the standard convolution map to increase reception field. Moreover, it has one more hyper-parameter dilated rate, which is the interval in the kernel (e.g. the dilated rate of normal convolution is 1).</p>
 <center>
     <span style="float:left">
     <img class="image" 
     style="width: 350px; height: 300px" 
     src="normal convolution.gif">
-    <div class="image_description">Figure 5: Standard convolution with a 3 x 3 kernel [6].</div>
+    <div class="image_description">Figure 8: Standard convolution with a 3 x 3 kernel [7].</div>
     </span>
     <span>
     <img class="image" 
     style="width: 350px; height: 300px" 
     src="dilated convolution.gif">
-    <div class="image_description">Figure 6: Dilated convolution with a 3 x 3 kernel and dilated rate 2 [6].</div>
+    <div class="image_description">Figure 9: Dilated convolution with a 3 x 3 kernel and dilated rate 2 [7].</div>
     </span>
 </center>
 <br/>
 
-<p>In Deep CNN, we always use down-sampling (pooling or convolution) to increase reception field and reduce the number of parameters. This will lead to the  loss of internal data structure and spatial hierarchical information which are important and useful for Semantic Segmentation. However, dilated convolution can increase reception field:  not only not lost the spatial information, but also increase the reception field. In addition, atrous convolution can combine the convolution and up-sample operations, which saves additional memory and time. </p>
+<p>In Deep CNN, we always use down-sampling (pooling or convolution) to increase reception field and reduce the number of parameters. This will lead to the  loss of internal data structure and spatial hierarchical information which are important and useful for Semantic Segmentation. However, dilated convolution can increase reception field:  not only not lose the spatial information, but also increase the reception field. In addition, atrous convolution can combine the convolution and up-sample operations, which saves additional memory and time. </p>
 <p>Next, we gonna look into the Deeplab.</p>
 <p>Differences between Deeplab and FCN</p>
 <ul>
-<li>Atrous Convolution</li>
-<li>Bi-linear Interpolation</li>
-<li>Conditional Random Field (CRF)</li>
+<li>Atrous Convolution </li>
+<li>Bi-linear Interpolation to upsampling</li>
+<li>Conditional Random Field (CRF) to sharp segmentation border</li>
 <li>Fusion of Features (same with UNet)</li>
 </ul>
 <center>
     <img class="image" 
     style="width: 650px; height: 350px" 
     src="Deeplab_v1.png">
-    <div class="image_description">Figure 7: Model Illustration. The coarse score map from Deep Convolutional Neural Network (with fully convolutional layers) is upsampled by bi-linear interpolation. A fully connected CRF is applied to refine the segmentation result. Best viewed in color [7].</div>
+    <div class="image_description">Figure 10: Model Illustration. The coarse score map from Deep Convolutional Neural Network (with fully convolutional layers) is upsampled by bi-linear interpolation. A fully connected CRF is applied to refine the segmentation result. Best viewed in color [8].</div>
 </center>
 <br/>
 
 <p>Deeplab v1 do some improvements for Semantic Segmentation on FCN networks. First of all, they use dilated convolution to upsample the resulting map, which the advantage is shown on figure 8. We can know that the performance of dilated convolution is better. </p>
 <center>
     <img class="image" 
-    style="width: 550px; height: 330px" 
+    style="width: 550px; height: 600px" 
+    src="deeplab_v1_model.png">
+    <div class="image_description">Figure 11: Changes from VGG to Deeplab [9].</div>
+</center>
+<br/>
+<center>
+    <img class="image" 
+    style="width: 550px; height: 350px" 
     src="Dalited convolution compare.png">
-    <div class="image_description">Figure 8: Illustration of atrous convolution in 2-D. Top row: sparse feature extraction with standard convolution on a low resolution input feature map. Bottom row: Dense feature extraction with atrous convolution with rate r = 2, applied on a high resolution input feature map [8].</div>
+    <div class="image_description">Figure 12: Illustration of atrous convolution in 2-D. Top row: sparse feature extraction with standard convolution on a low resolution input feature map. Bottom row: Dense feature extraction with atrous convolution with rate r = 2, applied on a high resolution input feature map [10].</div>
+</center>
+
+<p>Then, the score map will be up-sample by Bi-linear Interpolation which is different from FCN. Linear interpolation is to determine the rgb value of the target position based on the rgb values of the pixels on both sides, and the function used is a polynomial function. The Bi-linear interpolation means linear interpolation in both the horizontal and vertical directions. However, the effect on performance of different up-sample ways depends on the task. It doesn’t mean that Bi-linear Interpolation is better than deconvolution on all tasks. So, author uses this way maybe the result of training. </p>
+<center>
+    <img class="image" 
+    style="width: 650px; height: 200px" 
+    src="Results of CRF.png">
+    <div class="image_description">Figure 13: Score map (input before softmax function) and belief map (output of softmax function) for Aeroplane [8].</div>
 </center>
 <br/>
 
-<p>Then, the score map will be up-sample by Bi-linear Interpolation which is different from FCN. Linear interpolation is to determine the rgb value of the target position based on the rgb values of the pixels on both sides, and the function used is a polynomial function. The Bi-linear interpolation means linear interpolation in both the horizontal and vertical directions. However, the effect on performance of different up-sample ways depends on the task. It doesn’t mean that Bi-linear Interpolation is better than deconvolution on all tasks. So, author uses this way maybe the result of training. After the interpolation operation, the result of up-sample will be addressed by CRF. CRF involves some knowledge of probability graphs. In my own words,  it will address the score map by calculating the spatial distance between the pixel and the surrounding pixels and the difference in RGB value, so that the result of the feature map is more refined. Fully connected means that when calculating the current pixel, it must be calculated with all pixels in the feature map except for it. The obvious disadvantage of this method is that the amount of calculation is large. And this method has not been adopted in later versions (v3&amp;v3++) of deeplab, so it will not be explained in detail here. </p>
+<p>After the interpolation operation, the result of up-sample will be addressed by CRF. CRF involves some knowledge of probability graphs. In my own words,  it will address the score map by calculating the spatial distance between the pixel and the surrounding pixels and the difference in RGB value, so that the result of the feature map is more refined. Fully connected means that when calculating the current pixel, it must be calculated with all pixels in the feature map except for it. The obvious disadvantage of this method is that the amount of calculation is large. And this method has not been adopted in later versions (v3&amp;v3++) of deeplab, so it will not be explained in detail here. </p>
+<center>
+    <img class="image" 
+    style="width: 350px; height: 400px" 
+    src="FCNvsDeeplab.png">
+    <div class="image_description">Figure 14: Comparison with FCN. First row: images. Second row:
+ground truths. Third row: FCN-8s. Fourth row: DeepLab-CRF [8]. </div>
+</center>
+<br/>
+
+<p>We can see that the object border of Deeplab is more clear than FCN’s result. </p>
 <h2 id="Deeplab-v2"><a href="#Deeplab-v2" class="headerlink" title="Deeplab v2"></a>Deeplab v2</h2><p><strong>Atrous Spatial Pyramid</strong></p>
 <p>To further improve the performance of the Deeplab v1 architecture, they use Atrous Spatial Pyramid to address the problem of existence of object at multuple scales [2].</p>
 <center>
@@ -461,13 +511,13 @@ from layers with deconvolutional operations [3].</div>
     <img class="image" 
     style="width: 460px; height: 300px" 
     src="SPP.png">
-    <div class="image_description">Figure 9: Spatial Pyramid Pooling (SPP) [9].</div>
+    <div class="image_description">Figure 15: Spatial Pyramid Pooling (SPP) [11].</div>
     </span>
     <span>
     <img class="image" 
     style="width: 460px; height: 300px" 
     src="ASPP.png">
-    <div class="image_description">Figure 10: Atrous Spatial Pyramid Pooling (ASPP) [10].</div>
+    <div class="image_description">Figure 16: Atrous Spatial Pyramid Pooling (ASPP) [10].</div>
     </span>
 </center>
 <br/>
@@ -476,39 +526,47 @@ from layers with deconvolutional operations [3].</div>
 <p>ASPP is to apply multiple atrous convolution with different sampling rates to the input feature map, and fuse together. As objects of the same class can have different scales in the image, ASPP helps to account for different object scales which can improve the accuracy [2]. </p>
 <h2 id="Deeplab-v3-amp-v3"><a href="#Deeplab-v3-amp-v3" class="headerlink" title="Deeplab v3 &amp; v3++"></a>Deeplab v3 &amp; v3++</h2><p>Here i will discuss v3 and v3++ as one model. </p>
 <ul>
-<li>Depthwise Separable Convolution</li>
+<li>Depthwise Separable Convolution to reduce computation</li>
 <li>Encoder-Decoder Structure</li>
 </ul>
 <center>
     <img class="image" 
     style="width: 650px; height: 180px" 
     src="Depthwise_Separable_Convolution.png">
-    <div class="image_description">Figure 11: Depthwise separable convolution for atrous convolution [10].</div>
+    <div class="image_description">Figure 17: Depthwise separable convolution for atrous convolution [12].</div>
 </center>
 <br/>
 
-<p>Depthwise separable convolution is to increase computational efficiency. It decomposes a standard convolution into (a) a depthwise convolution (applying a single filter for each input channel) and (b) a pointwise convolution (combining the outputs from depthwise convolution across channels). For example, suppose you’ve an input RGB image of size $12$ x $12$ x $3$, the normal convolution operation using 256 filters of $5$ x $5$ x $3$  without padding and stride of 1 gives the output of size $8$ x $8$ x $256$. This whole operations costs $256$ x $5$ x $5$ x $3$ x $8$ x $8=1,228,800$ multiplications. If you use depthwise separable convolution, This whole operation took $3$ x $5$ x $5$ x $8$ x $8$ + $256$ x $1$ x $1$ x $3$ x $8$ x $8 = 53,952$ multiplication, which is far less compared to that of normal convolution [1]. Deeplab explores atrous separable convolution where atrous convolution is adopted in the depthwise convolution as well.</p>
+<p>Depthwise separable convolution is to increase computational efficiency. It decomposes a standard convolution into (a) a depthwise convolution (applying a single filter for each input channel) and (b) a pointwise convolution (combining the outputs from depthwise convolution across channels). For example, suppose you’ve an input RGB image of size $12$ x $12$ x $3$, the normal convolution operation using 256 filters of $5$ x $5$ x $3$  without padding and stride of 1 gives the output of size $8$ x $8$ x $256$. This whole operations costs $256$ x $5$ x $5$ x $3$ x $8$ x $8=1,228,800$ multiplications. </p>
+<p>If you use depthwise separable convolution, </p>
+<ul>
+<li>In <strong>depthwise convolution</strong>, the convolution operation is perfomed separately for each channel using three 5x5x1 filter, stacking whose outputs gives 8x8x3 image [1].</li>
+<li>The <strong>pointwise convolution</strong> is used to increase the depth, number of channels, by taking convolution of 256 1x1x3 filters with the 8x8x3 image, where each filter gives 8x8x1 image which are stacked together to get 8x8x256 desired output image [1].</li>
+</ul>
+<p>This whole operation took $3$ x $5$ x $5$ x $8$ x $8$ + $256$ x $1$ x $1$ x $3$ x $8$ x $8 = 53,952$ multiplication, which is far less compared to that of normal convolution [1]. Deeplab explores atrous separable convolution where atrous convolution is adopted in the depthwise convolution as well.</p>
 <center>
     <img class="image" 
     style="width: 730px; height: 430px" 
     src="Deeplabv3.png">
-    <div class="image_description">Figure 12: DeepLabv3+ extends DeepLabv3 by employing a encoder-decoder structure [10].</div>
+    <div class="image_description">Figure 18: DeepLabv3+ extends DeepLabv3 by employing a encoder-decoder structure [12].</div>
 </center>
 <br/>
 
-<p>From the figure 12, we can see changes about the decoder part which are to get a more refined result than DeepLabv3 especially along object boundaries. Specifically, after DeepLabV3+ samples 4x on the DeepLabv3 model output, then use $1$ x $1$ convolution reduces the dimensionality of DCNN’s output and concats it.<br>Finaly, result is up-sampling by Bilinear interpolation after using the $3$ x $3$ convolution.</p>
+<p>From the figure 18, we can see changes about the decoder part which are to get a more refined result than DeepLabv3 especially along object boundaries. Specifically, after DeepLabV3+ samples 4x on the DeepLabv3 model output, then use $1$ x $1$ convolution reduces the dimensionality of DCNN’s output and concats it.<br>Finaly, result is up-sampling by Bilinear interpolation after using the $3$ x $3$ convolution.</p>
 <p>Hope you have some understanding of the methods of semantic segmentation through this article, feel free to comment.</p>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
 <li>Kharshit Kumar. (2019) ‘Quick intro to semantic segmentation: FCN, U-Net and DeepLab’ Technical Fridays, <a target="_blank" rel="noopener" href="https://kharshit.github.io/blog/2019/08/09/quick-intro-to-semantic-segmentation">https://kharshit.github.io/blog/2019/08/09/quick-intro-to-semantic-segmentation</a>.  </li>
 <li>Beeren Sahu. (2019) ‘The Evolution of Deeplab for Semantic Segmentation’ towards data science, <a target="_blank" rel="noopener" href="https://towardsdatascience.com/the-evolution-of-deeplab-for-semantic-segmentation-95082b025571">https://towardsdatascience.com/the-evolution-of-deeplab-for-semantic-segmentation-95082b025571</a>.</li>
+<li>Lanbo Jiang. (2018) ‘Introduction to CNN: What is a fully connected layer’ Zhihu, <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/33841176">https://zhuanlan.zhihu.com/p/33841176</a></li>
 <li>Shelhamer, E., Long, J. and Darrell, T. (2017) ‘Fully Convolutional Networks for Semantic Segmentation’, IEEE Transactions on Pattern Analysis and Machine Intelligence, Pattern Analysis and Machine Intelligence, IEEE Transactions on, IEEE Trans. Pattern Anal. Mach. Intell, 39(4), pp. 640–651. doi: 10.1109/TPAMI.2016.2572683.</li>
 <li>Ronneberger, O., Fischer, P. and Brox, T., 2015. U-Net: Convolutional Networks For Biomedical Image Segmentation. [online] arXiv.org. Available at: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1505.04597">https://arxiv.org/abs/1505.04597</a> [Accessed 10 December 2020].</li>
-<li>小草AI (2019), 腾讯云, <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1467163">https://cloud.tencent.com/developer/article/1467163</a></li>
+<li>XiaocaoAI (2019), Tencent cloud, <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1467163">https://cloud.tencent.com/developer/article/1467163</a></li>
 <li>vdumoulin, GitHub, <a target="_blank" rel="noopener" href="https://github.com/vdumoulin/conv_arithmetic">https://github.com/vdumoulin/conv_arithmetic</a></li>
-<li>Chen, L., Papandreou, G., Kokkinos, I., Murphy, K. and Yuille, A., 2016. Semantic Image Segmentation With Deep Convolutional Nets And Fully Connected Crfs. [online] arXiv.org. Available at: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1412.7062">https://arxiv.org/abs/1412.7062</a> [Accessed 15 December 2020].</li>
+<li>Chen, L., Papandreou, G., Kokkinos, I., Murphy, K. and Yuille, A., 2016. Semantic Image Segmentation With Deep Convolutional Nets and Fully Connected Crfs. [online] arXiv.org. Available at: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1412.7062">https://arxiv.org/abs/1412.7062</a> [Accessed 15 December 2020].</li>
+<li>YouShihou. (2020) ‘Semantic segmentation paper notes–DeepLab-v1’ CSDN, <a target="_blank" rel="noopener" href="https://blog.csdn.net/zxdd2018/article/details/108599389">https://blog.csdn.net/zxdd2018/article/details/108599389</a></li>
 <li>L. Chen, G. Papandreou, I. Kokkinos, K. Murphy and A. L. Yuille, “DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs,” in IEEE Transactions on Pattern Analysis and Machine Intelligence, vol. 40, no. 4, pp. 834-848, 1 April 2018, doi: 10.1109/TPAMI.2017.2699184.</li>
 <li>He, K., Zhang, X., Ren, S. and Sun, J., 2020. Spatial Pyramid Pooling In Deep Convolutional Networks For Visual Recognition. arXiv.</li>
-<li>Chen, L., Papandreou, G., Kokkinos, I., Murphy, K. and Yuille, A., 2020. Deeplab: Semantic Image Segmentation With Deep Convolutional Nets, Atrous Convolution, And Fully Connected Crfs. [online] arXiv.org. Available at: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1606.00915v2">https://arxiv.org/abs/1606.00915v2</a> [Accessed 26 December 2020].</li>
+<li>Chen LC., Zhu Y., Papandreou G., Schroff F., Adam H. (2018) Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation. In: Ferrari V., Hebert M., Sminchisescu C., Weiss Y. (eds) Computer Vision – ECCV 2018. ECCV 2018. Lecture Notes in Computer Science, vol 11211. Springer, Cham. <a target="_blank" rel="noopener" href="https://doi.org/10.1007/978-3-030-01234-2_49">https://doi.org/10.1007/978-3-030-01234-2_49</a></li>
 </ol>
 
     </div>
@@ -582,7 +640,7 @@ from layers with deconvolutional operations [3].</div>
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
