@@ -40,7 +40,7 @@
 <meta property="og:image" content="http://example.com/2021/03/10/ICRA19-Real-Time-Joint-Semantic-Segmentation-and-Depth-Estimation-Using-Asymmetric-Annotations/qualitative_results.png">
 <meta property="og:image" content="http://example.com/2021/03/10/ICRA19-Real-Time-Joint-Semantic-Segmentation-and-Depth-Estimation-Using-Asymmetric-Annotations/ablation_study.png">
 <meta property="article:published_time" content="2021-03-10T10:22:01.000Z">
-<meta property="article:modified_time" content="2021-03-12T17:08:05.731Z">
+<meta property="article:modified_time" content="2021-03-15T12:54:38.591Z">
 <meta property="article:author" content="MINGCHEN">
 <meta property="article:tag" content="Paper Analysis">
 <meta property="article:tag" content="Multi-task Learning">
@@ -289,7 +289,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-12 17:08:05" itemprop="dateModified" datetime="2021-03-12T17:08:05+00:00">2021-03-12</time>
+        <time title="Modified: 2021-03-15 12:54:38" itemprop="dateModified" datetime="2021-03-15T12:54:38+00:00">2021-03-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -331,7 +331,7 @@
 }
 </style>
 
-<p>This paper tries to solve the problem of deployment of deep leaning models on robotic as sensory information extrators [1]. They use multi-task learning to solve semantic segmentation and depth estimation problems at once. In addition, to get real-time performance, mobileNet and RefineNet are adopted.</p>
+<p>This paper tries to solve the problem of deployment of deep leaning models on robotic as sensory information extractors [1]. They use multi-task learning to solve semantic segmentation and depth estimation problems at once. In addition, to get real-time performance, mobileNet and RefineNet are adopted.</p>
 <a id="more"></a>
 
 <h1 id="What-is-Multi-task-Learning"><a href="#What-is-Multi-task-Learning" class="headerlink" title="What is Multi-task Learning"></a>What is Multi-task Learning</h1><center>
@@ -342,7 +342,7 @@
 </center>
 <br/>
 
-<p>From the name, we can know multi-task learning means that try to make a single neural network to do sevaral things at the same time [2]. Then hope that each task here can help all other tasks. </p>
+<p>From the name, we can know multi-task learning means that try to make a single neural network to do several things at the same time [2]. Then hope that each task here can help all other tasks. </p>
 <center>
     <img class="image" 
     style="width: 450px; height: 450x" 
@@ -387,16 +387,16 @@
 </center>
 <br/>
 
-<p>You may get a better understaning from this mind map. Next, are the results of their model.</p>
+<p>You may get a better understanding from this mind map. Next, are the results of their model.</p>
 <center>
     <img class="image" 
     style="width: 850px; height: 250px" 
     src="results_test.png">
-    <div class="image_description">Figure 6: Results on the test set of NYUDv2. The speed of a single forward pass and the number of FLOPs are mesured on 640 x 480 inputs. For the reported mIoU the higher the better, whereas for the reported Root mean square error (RMSE) the lower the better [1].</div>
+    <div class="image_description">Figure 6: Results on the test set of NYUDv2. The speed of a single forward pass and the number of FLOPs are measured on 640 x 480 inputs. For the reported mIoU the higher the better, whereas for the reported Root mean square error (RMSE) the lower the better [1].</div>
 </center>
 <br/>
 
-<p>For the clarification, mIoU value is the higher the better and RMSE is the lower the better. From the figure 5, we can see the performance is good, although it is not the best.</p>
+<p>For the clarification, mIoU value is the higher the better and RMSE is the lower the better. From the figure 6, we can see the performance is good, although it is not the best.</p>
 <center>
     <img class="image" 
     style="width: 600px; height: 300px" 
@@ -406,7 +406,7 @@ and dark-blue pixels in ‘GT-Segm’ and ‘GT-Depth’ respectively, indicate 
 </center>
 <br/>
 
-<p>These are the qulitative results. </p>
+<p>These are the qualitative results. </p>
 <h2 id="Ablation-Studies"><a href="#Ablation-Studies" class="headerlink" title="Ablation Studies"></a>Ablation Studies</h2><p>To evaluate the importance of pretraining using the synthetic annotations and benefits of performing two tasks jointly, they conduct a series of ablation experiments. </p>
 <center>
     <img class="image" 
@@ -416,7 +416,7 @@ and dark-blue pixels in ‘GT-Segm’ and ‘GT-Depth’ respectively, indicate 
 </center>
 <br/>
 
-<p>The first thing they did is comparing three baseline models trained on the small set of 795 images. However, the results show that performing two tasks jointly on the small set does not provide any significant benefits for each seperate task, and even harms semantic segmentation. In contrast, having a large set of depth annotations results in valuable improvements in depth estimation and even semantic segmentation [1].</p>
+<p>The first thing they did is comparing three baseline models trained on the small set of 795 images. However, the results show that performing two tasks jointly on the small set does not provide any significant benefits for each separate task, and even harms semantic segmentation. In contrast, having a large set of depth annotations results in valuable improvements in depth estimation and even semantic segmentation [1].</p>
 <h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>This paper propose a good way to solve the problem of labeling data. However, I think their demonstration of multi-task learning may not be convinced because of the small dataset which only has 795 images. If we have 20000 data with both segmentation and depth labels and 20000 raw data with only depth label, does multi-task leaning improve performance? </p>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
 <li><p>Nekrasov, V., Dharmasiri, T., Spek, A., Drummond, T., Shen, C. and Reid, I., 2021. Real-Time Joint Semantic Segmentation and Depth Estimation Using Asymmetric Annotations. [online] arXiv.org. Available at: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1809.04766">https://arxiv.org/abs/1809.04766</a> [Accessed 10 March 2021].</p>
