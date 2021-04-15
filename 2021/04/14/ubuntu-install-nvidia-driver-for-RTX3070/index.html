@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2021/04/14/ubuntu-install-nvidia-driver-for-RTX3070/additional_drivers.jpeg">
 <meta property="article:published_time" content="2021-04-14T15:34:23.000Z">
-<meta property="article:modified_time" content="2021-04-14T17:11:59.569Z">
+<meta property="article:modified_time" content="2021-04-15T10:13:38.409Z">
 <meta property="article:author" content="MINGCHEN">
 <meta property="article:tag" content="RTX3070">
 <meta property="article:tag" content="linux kernel">
@@ -274,10 +274,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-04-14 16:34:23 / Modified: 18:11:59" itemprop="dateCreated datePublished" datetime="2021-04-14T16:34:23+01:00">2021-04-14</time>
+      <time title="Created: 2021-04-14 16:34:23" itemprop="dateCreated datePublished" datetime="2021-04-14T16:34:23+01:00">2021-04-14</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-15 11:13:38" itemprop="dateModified" datetime="2021-04-15T11:13:38+01:00">2021-04-15</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -321,6 +327,10 @@
 <p>The old linux kernel is not compatible with nvidia driver of RTX30 series graphics card. That is the reason of this article.</p>
 <a id="more"></a>
 
+
+<p>15/04/21 update</p>
+<p>Today, i find that some updates about nvidia driver are provides by ubuntu system. So, this problem maybe fixed after we update.</p>
+<hr>
 <p>Last week, i just received the computer provided by the school. I thought i could write codes happily, but i did not expect that the new computer i received had a problem. It took me a week to solve this problem, so make a note of it.</p>
 <p>At the beginning, it started to freeze without doing anything, and then is was unable to log in normally after restarting, and there were some situations such as screen blur. Use the “nvidia-smi” command shows “no devices were found”.</p>
 <p>At the beginning of searching for solutions on the internet, some said that the system’s built-in driver is confused with the NVIDIA driver, and nouveau needs to be disabled. Others said to enter the BIOS system to disable sceure boot, but they did not solve my problem.</p>
